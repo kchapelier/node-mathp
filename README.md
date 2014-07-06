@@ -34,13 +34,18 @@ npm test
 * [asinh(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/asinh)
 * [atanh(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atanh)
 * [cbrt(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/cbrt)
+* [clz32(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/clz32)
 * [cosh(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/cosh)
+* [hypot(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/hypot)
+* [log1p(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log1p)
+* [log10(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log10)
+* [log2(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log2)
 * [sign(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sign)
 * [sinh(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sinh)
 * [tanh(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/tanh)
 * [trunc(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/trunc)
 
-### Additionnal
+### Additional
 
 * wshaper(value, min, max, shape)
 * lerp(value1, value2, ratio)
@@ -66,9 +71,22 @@ var cos120degree = Math.cos(Math.toRadians(120));
 ## Potential use cases
 
 * Generative art.
+* Procedural heightmap / world generation.
 * Anything that may benefit from some _maths_, and a lot of things do.
 
 ## Changelog
+
+## Roadmap
+
+* Missing polyfills (fround and imul)
+* Optimization of polyfills
+* Tests for additional method
+
+## Acknowledgement
+
+Most ES6 polyfills are taken from [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)
+where they were contributed by Mozilla Contributors under the Creative Commons CC-0 license (public domain).
+Minor improvements of said polyfills were contributed back to MDN.
 
 ## License
 
