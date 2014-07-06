@@ -4,6 +4,8 @@ var should = require('chai').should();
 
 var Mathp = require('../index.js');
 
+//TODO more loose check on the float values as their precision is dependant of external factors
+
 describe('Polyfill', function(){
 
 	describe('#acosh()', function() {
@@ -61,6 +63,21 @@ describe('Polyfill', function(){
 		});
 	});
 
+	describe('#clz32()', function() {
+		it('must match the specifications', function () {
+			Mathp.clz32(1).should.equal(31);
+			Mathp.clz32(1000).should.equal(22);
+			Mathp.clz32().should.equal(32);
+			Mathp.clz32(NaN).should.equal(32);
+			Mathp.clz32("toto").should.equal(32);
+			Mathp.clz32(Infinity).should.equal(32);
+			Mathp.clz32(-Infinity).should.equal(32);
+			Mathp.clz32(true).should.equal(31);
+			Mathp.clz32(3.5).should.equal(30);
+			Mathp.clz32(-100).should.equal(0);
+		});
+	});
+
 	describe('#cosh()', function() {
 		it('must match the specifications', function() {
 			Mathp.cosh(NaN).should.eql(NaN);
@@ -82,6 +99,57 @@ describe('Polyfill', function(){
 			Mathp.expm1(-1).should.equal(-0.6321205588285577);
 			Mathp.expm1(Infinity).should.equal(Infinity);
 			Mathp.expm1(-Infinity).should.equal(-1);
+		});
+	});
+
+	describe('#hypot', function() {
+		it('must match the specifications', function() {
+			Mathp.hypot().should.equal(0);
+			Mathp.hypot(1, Infinity).should.equal(Infinity);
+			Mathp.hypot(1, -Infinity).should.equal(Infinity);
+			Mathp.hypot(1, 2, 3).should.equal(3.7416573867739413);
+			Mathp.hypot(1, "toto").should.eql(NaN);
+			Mathp.hypot(1, "toto", -Infinity).should.equal(Infinity);
+			Mathp.hypot(0, 0, -0).should.equal(0);
+		});
+	});
+
+	describe('#log1p', function() {
+		it('must match the specifications', function() {
+			Mathp.log1p(NaN).should.eql(NaN);
+			Mathp.log1p(0).should.equal(0);
+			Mathp.log1p(-0).should.equal(-0);
+			Mathp.log1p(1).should.equal(0.6931471805599453);
+			Mathp.log1p(-1).should.equal(-Infinity);
+			Mathp.log1p(-1.5).should.eql(NaN);
+			Mathp.log1p(Infinity).should.equal(Infinity);
+			Mathp.log1p(-Infinity).should.eql(NaN);
+		});
+	});
+
+	describe('#log10', function() {
+		it('must match the specifications', function() {
+			Mathp.log10(NaN).should.eql(NaN);
+			Mathp.log10(0).should.equal(-Infinity);
+			Mathp.log10(-0).should.equal(-Infinity);
+			Mathp.log10(1).should.equal(0);
+			Mathp.log10(-1).should.eql(NaN);
+			Mathp.log10(8).should.equal(0.9030899869919434);
+			Mathp.log10(Infinity).should.equal(Infinity);
+			Mathp.log10(-Infinity).should.eql(NaN);
+		});
+	});
+
+	describe('#log2', function() {
+		it('must match the specifications', function() {
+			Mathp.log2(NaN).should.eql(NaN);
+			Mathp.log2(0).should.equal(-Infinity);
+			Mathp.log2(-0).should.equal(-Infinity);
+			Mathp.log2(1).should.equal(0);
+			Mathp.log2(-1).should.eql(NaN);
+			Mathp.log2(8).should.equal(3);
+			Mathp.log2(Infinity).should.equal(Infinity);
+			Mathp.log2(-Infinity).should.eql(NaN);
 		});
 	});
 
