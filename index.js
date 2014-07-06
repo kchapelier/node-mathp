@@ -26,7 +26,7 @@ var importFunction = function(module) {
 	}
 	/*/
 	if(Math.hasOwnProperty(key) && !Mathp.hasOwnProperty(key)) {
-		Mathp[key] = module[key];
+		Mathp[key] = Math[key];
 	}
 	/**/
 });
