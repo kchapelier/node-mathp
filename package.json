@@ -1,6 +1,6 @@
 {
   "name": "mathp",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Math utility",
   "homepage": "https://github.com/kchapelier/node-mathp",
   "main": "index.js",
