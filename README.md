@@ -5,6 +5,20 @@ Mathp
 
 Math utility for node
 
+## Installing and testing
+
+With [npm](http://npmjs.org) do:
+
+```
+npm install mathp
+```
+
+To run the test suite, run the following command from the mathp directory:
+
+```
+npm test
+```
+
 ## (Planned) features
 
 * Can be use as a drop-in replacement for the Math object.
@@ -16,12 +30,20 @@ Math utility for node
 
 ### Polyfills
 
-* Currently, none.
+* [acosh(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/acosh)
+* [asinh(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/asinh)
+* [atanh(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atanh)
+* [cbrt(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/cbrt)
+* [cosh(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/cosh)
+* [sign(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sign)
+* [sinh(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sinh)
+* [tanh(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/tanh)
+* [trunc(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/trunc)
 
 ### Additionnal
 
+* wshaper(value, min, max, shape)
 * lerp(value1, value2, ratio)
-* sign(value)
 * limit(value, min, max)
 * rms(arrayOfValues)
 * amean(arrayOfValues)
@@ -37,4 +59,17 @@ Math utility for node
 
 ```js
 var Math = require('mathp');
+var taxiDist = Math.manhattanDistance(0, 0, 12, 15);
+var cos120degree = Math.cos(Math.toRadians(120));
 ```
+
+## Potential use cases
+
+* Generative art.
+* Anything that may benefit from some _maths_, and a lot of things do.
+
+## Changelog
+
+## License
+
+MIT
