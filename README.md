@@ -19,7 +19,7 @@ To run the test suite, run the following command from the mathp directory:
 npm test
 ```
 
-## (Planned) features
+## Features
 
 * Can be use as a drop-in replacement for the Math object.
 * Provide implementations of missing ES6 methods (i.e. for non-harmony node environment).
@@ -48,13 +48,14 @@ npm test
 * [trunc(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/trunc)
 
 All polyfills are tested with mocha+chai against the specifications described by the 25th revision of the draft for the 6th
-Edition of the ECMAScript Language to ensure 100% compatibility.
+Edition of the ECMAScript Language to ensure optimal conformity.
 
 ### Additional
 
 * wshaper(value, min, max, shape)
 * lerp(value1, value2, ratio)
 * limit(value, min, max)
+* scale(value, origMin, origMax, destMin, destMax)
 * rms(arrayOfValues)
 * amean(arrayOfValues)
 * gmean(arrayOfValues)
