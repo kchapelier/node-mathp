@@ -7,7 +7,6 @@ var Mathp = require('../index.js');
 //TODO more loose check on the float values as their precision is dependant of external factors
 
 describe('Polyfill', function(){
-
 	describe('#acosh()', function() {
 		it('must match the specifications', function() {
 			Mathp.acosh(NaN).should.eql(NaN);
@@ -102,6 +101,16 @@ describe('Polyfill', function(){
 		});
 	});
 
+	describe('#fround', function() {
+		it('must match the specifications', function() {
+			Mathp.fround(0).should.equal(0);    // 0
+			Mathp.fround(1).should.equal(1);     // 1
+			Mathp.fround(1.337).should.equal(1.3370000123977661);
+			Mathp.fround(1.5).should.equal(1.5);
+			Mathp.fround(NaN).should.eql(NaN);
+		});
+	});
+
 	describe('#hypot', function() {
 		it('must match the specifications', function() {
 			Mathp.hypot().should.equal(0);
@@ -111,6 +120,16 @@ describe('Polyfill', function(){
 			Mathp.hypot(1, "toto").should.eql(NaN);
 			Mathp.hypot(1, "toto", -Infinity).should.equal(Infinity);
 			Mathp.hypot(0, 0, -0).should.equal(0);
+		});
+	});
+
+	describe('#imul', function() {
+		it('must match the specifications', function() {
+			Mathp.imul(2, 4).should.equal(8);
+			Mathp.imul(-1, 8).should.equal(-8);
+			Mathp.imul(-2, -2).should.equal(4);
+			Mathp.imul(0xffffffff, 5).should.equal(-5);
+			Mathp.imul(0xfffffffe, 5).should.equal(-10);
 		});
 	});
 
@@ -163,6 +182,8 @@ describe('Polyfill', function(){
 			Mathp.sign(NaN).should.eql(NaN);
 			Mathp.sign("foo").should.eql(NaN);
 			Mathp.sign().should.eql(NaN);
+			Mathp.sign(Infinity).should.equal(1);
+			Mathp.sign(-Infinity).should.equal(-1);
 		});
 	});
 
