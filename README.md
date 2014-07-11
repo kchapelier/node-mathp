@@ -50,23 +50,48 @@ npm test
 All polyfills are tested with mocha+chai against the specifications described by the 25th revision of the draft for the 6th
 Edition of the ECMAScript Language to ensure optimal conformity.
 
-### Additional
+### Additional methods
 
-* wshaper(value, min, max, shape)
+#### General
+
+* sign1(value)
+* copySign(value, sign)
 * lerp(value1, value2, ratio)
 * limit(value, min, max)
 * scale(value, origMin, origMax, destMin, destMax)
-* rms(arrayOfValues)
-* amean(arrayOfValues)
-* gmean(arrayOfValues)
-* hmean(arrayOfValues)
+
+#### Distance
+
 * euclideanDistance(x1, y1, x2, y2)
 * manhattanDistance(x1, y1, x2, y2)
 * chebyshevDistance(x1, y1, x2, y2)
 * minkowskiDistance(x1, y1, x2, y2, p)
+
+#### Conversion
+
 * toDegrees(radians)
 * toRadians(degrees)
 
+#### Mean
+
+* rms(arrayOfValues)
+* amean(arrayOfValues)
+* gmean(arrayOfValues)
+* hmean(arrayOfValues)
+
+#### Checks
+
+* isNaN(value)
+* isZero(value)
+* isNegativeZero(value)
+* isPositiveZero(value)
+* isInfinity(value)
+* isNegativeInfinity(value)
+* isPositiveInfinity(value)
+
+#### Shaper
+
+* wshaper(value, min, max, shape)
 
 ```js
 var Math = require('mathp');
@@ -85,6 +110,7 @@ var cos120degree = Math.cos(Math.toRadians(120));
 ## Roadmap
 
 * Tests for additional methods
+* Fix the tests for -O
 * Froze the API and increment version to 1.0.0
 
 ## Acknowledgement
