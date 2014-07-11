@@ -9,7 +9,7 @@ var importFunction = function(module) {
 	}
 };
 
-//proxy all the methodes and properties of the Math object
+//proxy all the methods and properties of the Math object
 
 [
 	'E', 'PI', 'LN2', 'LN10', 'LOG2E', 'LOG10E', 'SQRT1_2', 'SQRT2',
@@ -18,21 +18,15 @@ var importFunction = function(module) {
 	'hypot', 'imul', 'log', 'log1p', 'log10', 'log2', 'max', 'min', 'pow',
 	'random', 'round', 'sign', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc'
 ].forEach(function(key) {
-	/*/
-	if(Math.hasOwnProperty(key)) {
-		//console.log('+ ' + key);
-	} else {
-		console.log('- ' + key);
-	}
-	/*/
 	if(Math.hasOwnProperty(key) && !Mathp.hasOwnProperty(key)) {
 		Mathp[key] = Math[key];
 	}
-	/**/
 });
 
+//import all the modules
 
 importFunction(require('./lib/polyfill'));
+importFunction(require('./lib/check'));
 importFunction(require('./lib/properties'));
 importFunction(require('./lib/general'));
 importFunction(require('./lib/trigonometry'));

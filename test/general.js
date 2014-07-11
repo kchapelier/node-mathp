@@ -4,7 +4,7 @@ var should = require('chai').should();
 
 var Mathp = require('../index.js');
 
-describe('General', function(){
+describe('General', function() {
 	describe('#lerp()', function() {
 		it('should make a proper linear interpolation', function() {
 			Mathp.lerp(0, 10, 0.2).should.equal(2);
@@ -52,6 +52,45 @@ describe('General', function(){
 		it('should work with inverted min and max original bounds', function() {
 			Mathp.scale(1, 1, 0, -1, 1).should.equal(-1);
 			Mathp.scale(0, 1, 0, -1, 1).should.equal(1);
+		});
+	});
+
+	describe('#sign1', function() {
+		it('should only returns values as 1, -1 or NaN', function() {
+			Mathp.sign1(3).should.equal(1);
+			Mathp.sign1(-3).should.equal(-1);
+			Mathp.sign1("-3").should.equal(-1);
+			Mathp.sign1(0).should.equal(1);
+			Mathp.sign1(-0).should.equal(-1);
+			Mathp.sign1(NaN).should.eql(NaN);
+			Mathp.sign1("foo").should.eql(NaN);
+			Mathp.sign1().should.eql(NaN);
+			Mathp.sign1(Infinity).should.equal(1);
+			Mathp.sign1(-Infinity).should.equal(-1);
+		});
+	});
+
+	describe('#copySign', function() {
+		it('should return NaN if at least one argument is NaN', function() {
+			Mathp.copySign(NaN, 1).should.eql(NaN);
+			Mathp.copySign(1, NaN).should.eql(NaN);
+			Mathp.copySign(NaN, NaN).should.eql(NaN);
+			Mathp.copySign('Toto', 1).should.eql(NaN);
+			Mathp.copySign(1, 'Toto').should.eql(NaN);
+		});
+
+		it('should apply the sign of the second argument to the first arguments', function() {
+			Mathp.copySign(2, 3).should.equal(2);
+			Mathp.copySign(2, -3).should.equal(-2);
+			Mathp.copySign(-2, 3).should.equal(2);
+			Mathp.copySign(-2, -3).should.equal(-2);
+		});
+
+		it('should not return 0 when sign is 0 or -0', function() {
+			Mathp.copySign(2, 0).should.equal(2);
+			Mathp.copySign(2, -0).should.equal(-2);
+			Mathp.copySign(-2, 0).should.equal(2);
+			Mathp.copySign(-2, -0).should.equal(-2);
 		});
 	});
 });
