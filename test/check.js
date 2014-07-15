@@ -73,6 +73,23 @@ describe('Check', function(){
 		});
 	});
 
+	describe('#isFinite()', function() {
+		it('should return true when the argument is a number (and not Infinity)', function() {
+			Mathp.isFinite(0).should.be.true;
+			Mathp.isFinite(-0).should.be.true;
+			Mathp.isFinite(1).should.be.true;
+			Mathp.isFinite(-1).should.be.true;
+			Mathp.isFinite('0').should.be.true;
+		});
+
+		it('should return false when the argument is not a number (or Infinity)', function() {
+			Mathp.isNegativeZero(Infinity).should.be.false;
+			Mathp.isNegativeZero(-Infinity).should.be.false;
+			Mathp.isNegativeZero(NaN).should.be.false;
+			Mathp.isNegativeZero('Toto').should.be.false;
+		});
+	});
+
 	describe('#isInfinity()', function() {
 		it('should return true when the argument is Infinity', function() {
 			Mathp.isInfinity(Infinity).should.be.true;
