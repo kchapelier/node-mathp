@@ -1,7 +1,7 @@
 Mathp
 =====
 
-[![Build Status](https://travis-ci.org/kchapelier/node-mathp.svg)](https://travis-ci.org/kchapelier/node-mathp)
+[![Build Status](https://travis-ci.org/kchapelier/node-mathp.svg)](https://travis-ci.org/kchapelier/node-mathp) [![NPM version](https://badge.fury.io/js/mathp.svg)](http://badge.fury.io/js/mathp)
 
 Math utility for node
 
@@ -74,10 +74,11 @@ Edition of the ECMAScript Language to ensure optimal conformity.
 
 #### Mean
 
-* rms(arrayOfValues)
-* amean(arrayOfValues)
-* gmean(arrayOfValues)
-* hmean(arrayOfValues)
+* rms(arrayOfValues) : [Root mean square](http://en.wikipedia.org/wiki/Root_mean_square)
+* amean(arrayOfValues) : [Arithmetic mean](http://en.wikipedia.org/wiki/Arithmetic_mean)
+* gmean(arrayOfValues) : [Geometric mean](http://en.wikipedia.org/wiki/Geometric_mean)
+* hmean(arrayOfValues) : [Harmonic mean](http://en.wikipedia.org/wiki/Harmonic_mean)
+* median(arrayOfValues)
 
 #### Checks
 
@@ -85,6 +86,7 @@ Edition of the ECMAScript Language to ensure optimal conformity.
 * isZero(value)
 * isNegativeZero(value)
 * isPositiveZero(value)
+* isFinite(value)
 * isInfinity(value)
 * isNegativeInfinity(value)
 * isPositiveInfinity(value)
@@ -107,10 +109,21 @@ var cos120degree = Math.cos(Math.toRadians(120));
 
 ## Changelog
 
+### 0.5.0 (2014.07.15) :
+
+ * New implementations : isFinite, median
+ * Cleaner module loading.
+
+### 0.4.0 (2014.07.11) :
+ 
+ * New implementations : isZero, isPositiveZero, isNegativeZero, isInfinity, isPositiveInfinity, isNegativeInfinity, sign1 and copySign.
+ * Fix major issue in wshaper().
+
 ## Roadmap
 
+* Add trigonometric methods
 * Tests for additional methods
-* Fix the tests for -O
+* Fix the tests for -O on the polyfills
 * Froze the API and increment version to 1.0.0
 
 ## Acknowledgement
