@@ -78,4 +78,23 @@ describe('Mean', function(){
 			Mathp.rms([-20, -5, 10]).should.equal(13.228756555322953);
 		});
 	});
+
+	describe('#rms()', function() {
+		it('should return 0 on an empty array and with zero arg', function() {
+			Mathp.median().should.equal(0);
+			Mathp.median([]).should.equal(0);
+		});
+
+		it('should return NaN when any of the values is NaN', function() {
+			Mathp.median([0, 1, NaN]).should.eql(NaN);
+			Mathp.median([0, 1, "Toto"]).should.eql(NaN);
+		});
+
+		it('should return the correct median', function() {
+			Mathp.median([0, 1, 2]).should.equal(1);
+			Mathp.median([1, 2, 3]).should.equal(2);
+			Mathp.median([2, 4, 1, 3]).should.equal(2.5);
+			Mathp.median([5, 8, 0, 3, 4]).should.equal(4);
+		});
+	});
 });
