@@ -79,7 +79,7 @@ describe('Mean', function(){
 		});
 	});
 
-	describe('#rms()', function() {
+	describe('#median()', function() {
 		it('should return 0 on an empty array and with zero arg', function() {
 			Mathp.median().should.equal(0);
 			Mathp.median([]).should.equal(0);
