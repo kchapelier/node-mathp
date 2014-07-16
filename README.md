@@ -109,6 +109,10 @@ var cos120degree = Math.cos(Math.toRadians(120));
 
 ## Changelog
 
+### 0.5.1 (2014.07.15) :
+
+ * Fix the negative zero edge case on the polyfills.
+
 ### 0.5.0 (2014.07.15) :
 
  * New implementations : isFinite, median
@@ -123,7 +127,6 @@ var cos120degree = Math.cos(Math.toRadians(120));
 
 * Add trigonometric methods
 * Tests for additional methods
-* Fix the tests for -O on the polyfills
 * Froze the API and increment version to 1.0.0
 
 ## Acknowledgement
