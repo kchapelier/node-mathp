@@ -7,7 +7,6 @@ var should = chai.should();
 var Mathp = require('../index.js');
 
 //TODO more loose check on the float values as their precision is dependant of external factors
-//TODO the checks for -0 are incorrect
 
 describe('Polyfill', function(){
 	describe('#acosh()', function() {
