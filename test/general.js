@@ -1,6 +1,8 @@
 "use strict";
 
-var should = require('chai').should();
+var chai = require('chai');
+chai.use(require('./plugin/chai-math'));
+var should = chai.should();
 
 var Mathp = require('../index.js');
 
@@ -62,9 +64,9 @@ describe('General', function() {
 			Mathp.sign1("-3").should.equal(-1);
 			Mathp.sign1(0).should.equal(1);
 			Mathp.sign1(-0).should.equal(-1);
-			Mathp.sign1(NaN).should.eql(NaN);
-			Mathp.sign1("foo").should.eql(NaN);
-			Mathp.sign1().should.eql(NaN);
+			Mathp.sign1(NaN).should.be.NaN;
+			Mathp.sign1("foo").should.be.NaN;
+			Mathp.sign1().should.be.NaN;
 			Mathp.sign1(Infinity).should.equal(1);
 			Mathp.sign1(-Infinity).should.equal(-1);
 		});
@@ -72,11 +74,11 @@ describe('General', function() {
 
 	describe('#copySign', function() {
 		it('should return NaN if at least one argument is NaN', function() {
-			Mathp.copySign(NaN, 1).should.eql(NaN);
-			Mathp.copySign(1, NaN).should.eql(NaN);
-			Mathp.copySign(NaN, NaN).should.eql(NaN);
-			Mathp.copySign('Toto', 1).should.eql(NaN);
-			Mathp.copySign(1, 'Toto').should.eql(NaN);
+			Mathp.copySign(NaN, 1).should.be.NaN;
+			Mathp.copySign(1, NaN).should.be.NaN;
+			Mathp.copySign(NaN, NaN).should.be.NaN;
+			Mathp.copySign('Toto', 1).should.be.NaN;
+			Mathp.copySign(1, 'Toto').should.be.NaN;
 		});
 
 		it('should apply the sign of the second argument to the first arguments', function() {

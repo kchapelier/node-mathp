@@ -1,6 +1,8 @@
 "use strict";
 
-var should = require('chai').should();
+var chai = require('chai');
+chai.use(require('./plugin/chai-math'));
+var should = chai.should();
 
 var Mathp = require('../index.js');
 
@@ -14,8 +16,8 @@ describe('Mean', function(){
 		});
 
 		it('should return NaN when any of the values is NaN', function() {
-			Mathp.amean([0, 1, NaN]).should.eql(NaN);
-			Mathp.amean([0, 1, "Toto"]).should.eql(NaN);
+			Mathp.amean([0, 1, NaN]).should.be.NaN;
+			Mathp.amean([0, 1, "Toto"]).should.be.NaN;
 		});
 
 		it('should return the correct arithmetic mean', function() {
@@ -32,8 +34,8 @@ describe('Mean', function(){
 		});
 
 		it('should return NaN when any of the values is NaN', function() {
-			Mathp.gmean([0, 1, NaN]).should.eql(NaN);
-			Mathp.gmean([0, 1, "Toto"]).should.eql(NaN);
+			Mathp.gmean([0, 1, NaN]).should.be.NaN;
+			Mathp.gmean([0, 1, "Toto"]).should.be.NaN;
 		});
 
 		it('should return the correct geometric mean', function() {
@@ -50,8 +52,8 @@ describe('Mean', function(){
 		});
 
 		it('should return NaN when any of the values is NaN', function() {
-			Mathp.hmean([0, 1, NaN]).should.eql(NaN);
-			Mathp.hmean([0, 1, "Toto"]).should.eql(NaN);
+			Mathp.hmean([0, 1, NaN]).should.be.NaN;
+			Mathp.hmean([0, 1, "Toto"]).should.be.NaN;
 		});
 
 		it('should return the correct harmonic mean', function() {
@@ -68,8 +70,8 @@ describe('Mean', function(){
 		});
 
 		it('should return NaN when any of the values is NaN', function() {
-			Mathp.rms([0, 1, NaN]).should.eql(NaN);
-			Mathp.rms([0, 1, "Toto"]).should.eql(NaN);
+			Mathp.rms([0, 1, NaN]).should.be.NaN;
+			Mathp.rms([0, 1, "Toto"]).should.be.NaN;
 		});
 
 		it('should return the correct root mean square', function() {
@@ -86,8 +88,8 @@ describe('Mean', function(){
 		});
 
 		it('should return NaN when any of the values is NaN', function() {
-			Mathp.median([0, 1, NaN]).should.eql(NaN);
-			Mathp.median([0, 1, "Toto"]).should.eql(NaN);
+			Mathp.median([0, 1, NaN]).should.be.NaN;
+			Mathp.median([0, 1, "Toto"]).should.be.NaN;
 		});
 
 		it('should return the correct median', function() {
