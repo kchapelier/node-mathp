@@ -57,7 +57,7 @@ describe('General', function() {
 		});
 	});
 
-	describe('#sign1', function() {
+	describe('#sign1()', function() {
 		it('should only returns values as 1, -1 or NaN', function() {
 			Mathp.sign1(3).should.equal(1);
 			Mathp.sign1(-3).should.equal(-1);
@@ -72,7 +72,7 @@ describe('General', function() {
 		});
 	});
 
-	describe('#copySign', function() {
+	describe('#copySign()', function() {
 		it('should return NaN if at least one argument is NaN', function() {
 			Mathp.copySign(NaN, 1).should.be.NaN;
 			Mathp.copySign(1, NaN).should.be.NaN;
@@ -93,6 +93,60 @@ describe('General', function() {
 			Mathp.copySign(2, -0).should.equal(-2);
 			Mathp.copySign(-2, 0).should.equal(2);
 			Mathp.copySign(-2, -0).should.equal(-2);
+		});
+	});
+
+	describe('#smoothstep()', function() {
+		it('should return NaN if at least one argument is NaN', function() {
+			Mathp.smoothstep(NaN, 1 , 1).should.be.NaN;
+			Mathp.smoothstep(0, NaN , 1).should.be.NaN;
+			Mathp.smoothstep(0, 1 , NaN).should.be.NaN;
+			Mathp.smoothstep('toto', 1 , 1).should.be.NaN;
+			Mathp.smoothstep(0, 'toto' , 1).should.be.NaN;
+			Mathp.smoothstep(0, 1 , 'toto').should.be.NaN;
+		});
+
+		it('should apply the smoothstep correctly for the boundaries and the middle', function() {
+			Mathp.smoothstep(0, 1, 0).should.equal(0);
+			Mathp.smoothstep(0, 1, 0.5).should.equal(0.5);
+			Mathp.smoothstep(0, 1, 1).should.equal(1);
+		});
+
+		it('should apply the smootherstep correctly', function() {
+			Mathp.smoothstep(-10, 10, 7).should.equal(0.9392499999999999);
+			Mathp.smoothstep(-10, 10, -7).should.equal(0.06075);
+		});
+
+		it('should never return a value outside of the bounds', function() {
+			Mathp.smoothstep(0, 1 , 2).should.equal(1);
+			Mathp.smoothstep(0, 1 , -1).should.equal(0);
+		});
+	});
+
+	describe('#smootherstep()', function() {
+		it('should return NaN if at least one argument is NaN', function() {
+			Mathp.smootherstep(NaN, 1 , 1).should.be.NaN;
+			Mathp.smootherstep(0, NaN , 1).should.be.NaN;
+			Mathp.smootherstep(0, 1 , NaN).should.be.NaN;
+			Mathp.smootherstep('toto', 1 , 1).should.be.NaN;
+			Mathp.smootherstep(0, 'toto' , 1).should.be.NaN;
+			Mathp.smootherstep(0, 1 , 'toto').should.be.NaN;
+		});
+
+		it('should apply the smootherstep correctly for the boundaries and the middle', function() {
+			Mathp.smootherstep(0, 1, 0).should.equal(0);
+			Mathp.smootherstep(0, 1, 0.5).should.equal(0.5);
+			Mathp.smootherstep(0, 1, 1).should.equal(1);
+		});
+
+		it('should apply the smootherstep correctly', function() {
+			Mathp.smootherstep(-10, 10, 7).should.equal(0.9733881249999993);
+			Mathp.smootherstep(-10, 10, -7).should.equal(0.026611875);
+		});
+
+		it('should never return a value outside of the bounds', function() {
+			Mathp.smootherstep(0, 1 , 2).should.equal(1);
+			Mathp.smootherstep(0, 1 , -1).should.equal(0);
 		});
 	});
 });
