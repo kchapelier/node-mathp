@@ -1,8 +1,8 @@
 "use strict";
 
-var chai = require('chai');
-chai.use(require('./plugin/chai-math'));
-var should = chai.should();
+require('chai')
+	.use(require('./plugin/chai-math'))
+	.should();
 
 var Mathp = require('../index.js');
 
