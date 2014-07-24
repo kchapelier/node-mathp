@@ -21,10 +21,11 @@ npm test
 
 ## Features
 
-* Can be use as a drop-in replacement for the Math object.
-* Provide implementations of missing ES6 methods (i.e. for non-harmony node environment).
+* Can be used as a drop-in replacement for the Math object.
+* Provide implementations of missing ES6 methods.
 * Doesn't modify the actual Math object.
 * Doesn't modify the Number prototype or rely on boxing of any kind.
+* Works in Titanium.
 
 ## Current methods
 
@@ -59,6 +60,9 @@ Edition of the ECMAScript Language to ensure optimal conformity.
 * lerp(value1, value2, ratio)
 * limit(value, min, max)
 * scale(value, origMin, origMax, destMin, destMax)
+* factorial(value)
+* smoothstep(min, max, value)
+* smootherstep(min, max, value)
 
 #### Distance
 
@@ -66,6 +70,22 @@ Edition of the ECMAScript Language to ensure optimal conformity.
 * manhattanDistance(x1, y1, x2, y2)
 * chebyshevDistance(x1, y1, x2, y2)
 * minkowskiDistance(x1, y1, x2, y2, p)
+
+#### Trigonometry
+
+* sinc(value)
+* sec(value)
+* csc(value)
+* cot(value)
+* asec(value)
+* acsc(value)
+* acot(value)
+* sech(value)
+* csch(value)
+* coth(value)
+* asech(value)
+* acsch(value)
+* acoth(value)
 
 #### Conversion
 
@@ -91,7 +111,7 @@ Edition of the ECMAScript Language to ensure optimal conformity.
 * isNegativeInfinity(value)
 * isPositiveInfinity(value)
 
-#### Shaper
+#### Extras
 
 * wshaper(value, min, max, shape)
 
@@ -109,13 +129,19 @@ var cos120degree = Math.cos(Math.toRadians(120));
 
 ## Changelog
 
-### 0.5.1 (2014.07.15) :
+### 0.6.0 (2014.07.24) :
 
- * Fix the negative zero edge case on the polyfills.
+ * New implementations : smoothstep, smootherstep, factorial, sinc, sec, csc, cot, asec, acsc, acot, sech, csch, coth, asech, acsch, acoth.
+ * Added properties : PI_2, PI_4 and GOLDEN_RATIO.
+ * isFinite() and isNaN() are now direct proxy of the builtin functions.
+
+### 0.5.1 (2014.07.16) :
+
+ * Fix the negative zero edge cases in the polyfills.
 
 ### 0.5.0 (2014.07.15) :
 
- * New implementations : isFinite, median
+ * New implementations : isFinite, median.
  * Cleaner module loading.
 
 ### 0.4.0 (2014.07.11) :
@@ -125,9 +151,7 @@ var cos120degree = Math.cos(Math.toRadians(120));
 
 ## Roadmap
 
-* Add trigonometric methods
-* Tests for additional methods
-* Froze the API and increment version to 1.0.0
+* Freeze the API and increment version to 1.0.0
 
 ## Acknowledgement
 
