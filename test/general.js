@@ -149,4 +149,21 @@ describe('General', function() {
 			Mathp.smootherstep(0, 1 , -1).should.equal(0);
 		});
 	});
+
+	describe('#factorial()', function() {
+		it('should return NaN if the argument is not a positive integer', function () {
+			Mathp.factorial(NaN).should.be.NaN;
+			Mathp.factorial('toto').should.be.NaN;
+			Mathp.factorial(-1).should.be.NaN;
+			Mathp.factorial(1.01).should.be.NaN;
+		});
+
+		it('should return the proper factorial for positive integers', function() {
+			Mathp.factorial(0).should.equal(1);
+			Mathp.factorial(1).should.equal(1);
+			Mathp.factorial(2).should.equal(2);
+			Mathp.factorial(3).should.equal(6);
+			Mathp.factorial(10).should.equal(3628800);
+		});
+	});
 });
