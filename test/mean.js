@@ -6,8 +6,6 @@ require('chai')
 
 var Mathp = require('../index.js');
 
-//TODO more loose check on the float values as their precision is dependant of external factors
-
 describe('Mean', function(){
 	describe('#amean()', function() {
 		it('should return 0 on an empty array and with zero arg', function() {
@@ -40,8 +38,8 @@ describe('Mean', function(){
 
 		it('should return the correct geometric mean', function() {
 			Mathp.gmean([0, 1, 2]).should.equal(0);
-			Mathp.gmean([1, 2, 3]).should.equal(1.8171205928321397);
-			Mathp.gmean([-20, -5, 10]).should.equal(9.999999999999998);
+			Mathp.gmean([1, 2, 3]).should.equalFloat(1.8171205928321397);
+			Mathp.gmean([-20, -5, 10]).should.equalFloat(9.999999999999998);
 		});
 	});
 
@@ -58,7 +56,7 @@ describe('Mean', function(){
 
 		it('should return the correct harmonic mean', function() {
 			Mathp.hmean([0, 1, 2]).should.equal(0);
-			Mathp.hmean([1, 2, 3]).should.equal(1.6363636363636365);
+			Mathp.hmean([1, 2, 3]).should.equalFloat(1.6363636363636365);
 			Mathp.hmean([-20, -5, 10]).should.equal(-20);
 		});
 	});
@@ -75,9 +73,9 @@ describe('Mean', function(){
 		});
 
 		it('should return the correct root mean square', function() {
-			Mathp.rms([0, 1, 2]).should.equal(1.2909944487358056);
-			Mathp.rms([1, 2, 3]).should.equal(2.160246899469287);
-			Mathp.rms([-20, -5, 10]).should.equal(13.228756555322953);
+			Mathp.rms([0, 1, 2]).should.equalFloat(1.2909944487358056);
+			Mathp.rms([1, 2, 3]).should.equalFloat(2.160246899469287);
+			Mathp.rms([-20, -5, 10]).should.equalFloat(13.228756555322953);
 		});
 	});
 

@@ -6,8 +6,6 @@ require('chai')
 
 var Mathp = require('../index.js');
 
-//TODO more loose check on the float values as their precision is dependant of external factors
-
 describe('Extra', function(){
 	describe('#wshaper()', function() {
 		it('should make the correct conversion', function() {

@@ -113,7 +113,7 @@ describe('General', function() {
 		});
 
 		it('should apply the smootherstep correctly', function() {
-			Mathp.smoothstep(-10, 10, 7).should.equal(0.9392499999999999);
+			Mathp.smoothstep(-10, 10, 7).should.equalFloat(0.9392499999999999);
 			Mathp.smoothstep(-10, 10, -7).should.equal(0.06075);
 		});
 
@@ -140,8 +140,8 @@ describe('General', function() {
 		});
 
 		it('should apply the smootherstep correctly', function() {
-			Mathp.smootherstep(-10, 10, 7).should.equal(0.9733881249999993);
-			Mathp.smootherstep(-10, 10, -7).should.equal(0.026611875);
+			Mathp.smootherstep(-10, 10, 7).should.equalFloat(0.9733881249999993);
+			Mathp.smootherstep(-10, 10, -7).should.equalFloat(0.026611875);
 		});
 
 		it('should never return a value outside of the bounds', function() {

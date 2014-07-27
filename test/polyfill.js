@@ -6,8 +6,6 @@ require('chai')
 
 var Mathp = require('../index.js');
 
-//TODO more loose check on the float values as their precision is dependant of external factors
-
 describe('Polyfill', function(){
 	describe('#acosh()', function() {
 		it('must match the specifications', function() {
@@ -16,7 +14,7 @@ describe('Polyfill', function(){
 			Mathp.acosh(-0).should.be.NaN;
 			Mathp.acosh(1).should.be.positiveZero;
 			Mathp.acosh(-1).should.be.NaN;
-			Mathp.acosh(2).should.equal(1.3169578969248166);
+			Mathp.acosh(2).should.equalFloat(1.3169578969248166);
 			Mathp.acosh(Infinity).should.equal(Infinity);
 			Mathp.acosh(-Infinity).should.be.NaN;
 		});
@@ -27,8 +25,8 @@ describe('Polyfill', function(){
 			Mathp.asinh(NaN).should.be.NaN;
 			Mathp.asinh(0).should.be.positiveZero;
 			Mathp.asinh(-0).should.be.negativeZero;
-			Mathp.asinh(1).should.closeTo(0.8813735870195429, 0.00000000000001);
-			Mathp.asinh(-1).should.closeTo(-0.8813735870195429, 0.00000000000001);
+			Mathp.asinh(1).should.equalFloat(0.8813735870195429);
+			Mathp.asinh(-1).should.equalFloat(-0.8813735870195429);
 			Mathp.asinh(Infinity).should.equal(Infinity);
 			Mathp.asinh(-Infinity).should.equal(-Infinity);
 		});
@@ -39,8 +37,8 @@ describe('Polyfill', function(){
 			Mathp.atanh(NaN).should.be.NaN;
 			Mathp.atanh(0).should.be.positiveZero;
 			Mathp.atanh(-0).should.be.negativeZero;
-			Mathp.atanh(0.5).should.equal(0.5493061443340549);
-			Mathp.atanh(-0.5).should.equal(-0.5493061443340549);
+			Mathp.atanh(0.5).should.equalFloat(0.5493061443340549);
+			Mathp.atanh(-0.5).should.equalFloat(-0.5493061443340549);
 			Mathp.atanh(1).should.equal(Infinity);
 			Mathp.atanh(-1).should.equal(-Infinity);
 			Mathp.atanh(1.2).should.be.NaN;
@@ -84,8 +82,8 @@ describe('Polyfill', function(){
 			Mathp.cosh(NaN).should.be.NaN;
 			Mathp.cosh(0).should.equal(1);
 			Mathp.cosh(-0).should.equal(1);
-			Mathp.cosh(1).should.equal(1.5430806348152437);
-			Mathp.cosh(-1).should.equal(1.5430806348152437);
+			Mathp.cosh(1).should.equalFloat(1.5430806348152437);
+			Mathp.cosh(-1).should.equalFloat(1.5430806348152437);
 			Mathp.cosh(Infinity).should.equal(Infinity);
 			Mathp.cosh(-Infinity).should.equal(Infinity);
 		});
@@ -96,8 +94,8 @@ describe('Polyfill', function(){
 			Mathp.expm1(NaN).should.be.NaN;
 			Mathp.expm1(0).should.be.positiveZero;
 			Mathp.expm1(-0).should.be.negativeZero;
-			Mathp.expm1(1).should.equal(1.718281828459045);
-			Mathp.expm1(-1).should.equal(-0.6321205588285577);
+			Mathp.expm1(1).should.equalFloat(1.718281828459045);
+			Mathp.expm1(-1).should.equalFloat(-0.6321205588285577);
 			Mathp.expm1(Infinity).should.equal(Infinity);
 			Mathp.expm1(-Infinity).should.equal(-1);
 		});
@@ -107,7 +105,7 @@ describe('Polyfill', function(){
 		it('must match the specifications', function() {
 			Mathp.fround(0).should.be.positiveZero;
 			Mathp.fround(1).should.equal(1);
-			Mathp.fround(1.337).should.equal(1.3370000123977661);
+			Mathp.fround(1.337).should.equalFloat(1.3370000123977661);
 			Mathp.fround(1.5).should.equal(1.5);
 			Mathp.fround(NaN).should.be.NaN;
 		});
@@ -118,7 +116,7 @@ describe('Polyfill', function(){
 			Mathp.hypot().should.be.positiveZero;
 			Mathp.hypot(1, Infinity).should.equal(Infinity);
 			Mathp.hypot(1, -Infinity).should.equal(Infinity);
-			Mathp.hypot(1, 2, 3).should.equal(3.7416573867739413);
+			Mathp.hypot(1, 2, 3).should.equalFloat(3.7416573867739413);
 			Mathp.hypot(1, "toto").should.be.NaN;
 			Mathp.hypot(1, "toto", -Infinity).should.equal(Infinity);
 			Mathp.hypot(0, 0, -0).should.be.positiveZero;
@@ -140,7 +138,7 @@ describe('Polyfill', function(){
 			Mathp.log1p(NaN).should.be.NaN;
 			Mathp.log1p(0).should.be.positiveZero;
 			Mathp.log1p(-0).should.be.negativeZero;
-			Mathp.log1p(1).should.equal(0.6931471805599453);
+			Mathp.log1p(1).should.equalFloat(0.6931471805599453);
 			Mathp.log1p(-1).should.equal(-Infinity);
 			Mathp.log1p(-1.5).should.be.NaN;
 			Mathp.log1p(Infinity).should.equal(Infinity);
@@ -155,7 +153,7 @@ describe('Polyfill', function(){
 			Mathp.log10(-0).should.equal(-Infinity);
 			Mathp.log10(1).should.be.positiveZero;
 			Mathp.log10(-1).should.be.NaN;
-			Mathp.log10(8).should.equal(0.9030899869919434);
+			Mathp.log10(8).should.equalFloat(0.9030899869919434);
 			Mathp.log10(Infinity).should.equal(Infinity);
 			Mathp.log10(-Infinity).should.be.NaN;
 		});
@@ -194,8 +192,8 @@ describe('Polyfill', function(){
 			Mathp.sinh(NaN).should.be.NaN;
 			Mathp.sinh(0).should.be.positiveZero;
 			Mathp.sinh(-0).should.be.negativeZero;
-			Mathp.sinh(1).should.equal(1.1752011936438014);
-			Mathp.sinh(-1).should.equal(-1.1752011936438014);
+			Mathp.sinh(1).should.equalFloat(1.1752011936438014);
+			Mathp.sinh(-1).should.equalFloat(-1.1752011936438014);
 			Mathp.sinh(Infinity).should.equal(Infinity);
 			Mathp.sinh(-Infinity).should.equal(-Infinity);
 		});
@@ -206,8 +204,8 @@ describe('Polyfill', function(){
 			Mathp.tanh(NaN).should.be.NaN;
 			Mathp.tanh(0).should.be.positiveZero;
 			Mathp.tanh(-0).should.be.negativeZero;
-			Mathp.tanh(1).should.equal(0.7615941559557649);
-			Mathp.tanh(-1).should.equal(-0.7615941559557649);
+			Mathp.tanh(1).should.equalFloat(0.7615941559557649);
+			Mathp.tanh(-1).should.equalFloat(-0.7615941559557649);
 			Mathp.tanh(Infinity).should.equal(1);
 			Mathp.tanh(-Infinity).should.equal(-1);
 		});

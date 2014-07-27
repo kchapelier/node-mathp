@@ -13,8 +13,8 @@ describe('Trigonometry', function(){
 		});
 
 		it('should apply sinc correctly', function() {
-			Mathp.sinc(Mathp.PI_2).should.equal(0.6366197723675814);
-			Mathp.sinc(3 * Mathp.PI_2).should.equal(-0.2122065907891938);
+			Mathp.sinc(Mathp.PI_2).should.equalFloat(0.6366197723675814);
+			Mathp.sinc(3 * Mathp.PI_2).should.equalFloat(-0.2122065907891938);
 		});
 	});
 
@@ -23,8 +23,8 @@ describe('Trigonometry', function(){
 			Mathp.cot(-0).should.equal(-Infinity);
 			Mathp.cot(0).should.equal(Infinity);
 
-			Mathp.cot(1).should.equal(0.6420926159343306);
-			Mathp.cot(-1).should.equal(-0.6420926159343306);
+			Mathp.cot(1).should.equalFloat(0.6420926159343306);
+			Mathp.cot(-1).should.equalFloat(-0.6420926159343306);
 
 			Mathp.cot(Infinity).should.be.NaN;
 			Mathp.cot(-Infinity).should.be.NaN;
@@ -39,8 +39,8 @@ describe('Trigonometry', function(){
 			Mathp.sec(-0).should.equal(1);
 			Mathp.sec(0).should.equal(1);
 
-			Mathp.sec(1).should.equal(1.8508157176809255);
-			Mathp.sec(-1).should.equal(1.8508157176809255);
+			Mathp.sec(1).should.equalFloat(1.8508157176809255);
+			Mathp.sec(-1).should.equalFloat(1.8508157176809255);
 
 			Mathp.sec(Infinity).should.be.NaN;
 			Mathp.sec(-Infinity).should.be.NaN;
@@ -55,8 +55,8 @@ describe('Trigonometry', function(){
 			Mathp.csc(-0).should.equal(-Infinity);
 			Mathp.csc(0).should.equal(Infinity);
 
-			Mathp.csc(1).should.equal(1.1883951057781212);
-			Mathp.csc(-1).should.equal(-1.1883951057781212);
+			Mathp.csc(1).should.equalFloat(1.1883951057781212);
+			Mathp.csc(-1).should.equalFloat(-1.1883951057781212);
 
 			Mathp.csc(Infinity).should.be.NaN;
 			Mathp.csc(-Infinity).should.be.NaN;
@@ -114,8 +114,8 @@ describe('Trigonometry', function(){
 			Mathp.coth(-0).should.equal(-Infinity);
 			Mathp.coth(0).should.equal(Infinity);
 
-			Mathp.coth(1).should.equal(1.3130352854993315);
-			Mathp.coth(-1).should.equal(-1.3130352854993315);
+			Mathp.coth(1).should.equalFloat(1.3130352854993315);
+			Mathp.coth(-1).should.equalFloat(-1.3130352854993315);
 
 			Mathp.coth(Infinity).should.equal(1);
 			Mathp.coth(-Infinity).should.equal(-1);
@@ -128,8 +128,8 @@ describe('Trigonometry', function(){
 			Mathp.sech(-0).should.equal(1);
 			Mathp.sech(0).should.equal(1);
 
-			Mathp.sech(1).should.equal(0.6480542736638855);
-			Mathp.sech(-1).should.equal(0.6480542736638855);
+			Mathp.sech(1).should.equalFloat(0.6480542736638855);
+			Mathp.sech(-1).should.equalFloat(0.6480542736638855);
 
 			Mathp.sech(Infinity).should.be.positiveZero;
 			Mathp.sech(-Infinity).should.be.positiveZero;
@@ -142,8 +142,8 @@ describe('Trigonometry', function(){
 			Mathp.csch(-0).should.equal(-Infinity);
 			Mathp.csch(0).should.equal(Infinity);
 
-			Mathp.csch(1).should.equal(0.8509181282393216);
-			Mathp.csch(-1).should.equal(-0.8509181282393216);
+			Mathp.csch(1).should.equalFloat(0.8509181282393216);
+			Mathp.csch(-1).should.equalFloat(-0.8509181282393216);
 
 			Mathp.csch(Infinity).should.be.positiveZero;
 			Mathp.csch(-Infinity).should.be.negativeZero;
@@ -184,8 +184,8 @@ describe('Trigonometry', function(){
 			Mathp.acsch(-0).should.equal(-Infinity);
 			Mathp.acsch(0).should.equal(Infinity);
 
-			Mathp.acsch(1).should.equal(0.8813735870195429);
-			Mathp.acsch(-1).should.equal(-0.8813735870195428);
+			Mathp.acsch(1).should.equalFloat(0.8813735870195429);
+			Mathp.acsch(-1).should.equalFloat(-0.8813735870195428);
 
 			Mathp.acsch(Infinity).should.equal(0);
 			Mathp.acsch(-Infinity).should.equal(0);
