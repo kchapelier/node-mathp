@@ -8,7 +8,7 @@ var Mathp = require('../index.js');
 
 //TODO more loose check on the float values as their precision is dependant of external factors
 
-describe('Conversion', function(){
+describe('Extra', function(){
 	describe('#wshaper()', function() {
 		it('should make the correct conversion', function() {
 			Mathp.wshaper(0, 0, 1, [1, 10]).should.equal(1);

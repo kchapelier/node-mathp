@@ -28,6 +28,6 @@ importFunctions(require('./lib/trigonometry'));
 importFunctions(require('./lib/mean'));
 importFunctions(require('./lib/distance'));
 importFunctions(require('./lib/conversion'));
-importFunctions(require('./lib/shaper'));
+importFunctions(require('./lib/extra'));
 
 module.exports = Mathp;
