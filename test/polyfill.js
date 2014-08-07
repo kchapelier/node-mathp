@@ -121,6 +121,10 @@ describe('Polyfill', function(){
 			Mathp.hypot(1, "toto", -Infinity).should.equal(Infinity);
 			Mathp.hypot(0, 0, -0).should.be.positiveZero;
 		});
+
+		it('must have a length of 2', function() {
+			Mathp.hypot.length.should.equal(2);
+		});
 	});
 
 	describe('#imul', function() {
