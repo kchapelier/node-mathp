@@ -49,7 +49,7 @@ npm test
 * [trunc(value)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/trunc)
 
 All polyfills are tested with mocha+chai against the specifications described by the 25th revision of the draft for the 6th
-Edition of the ECMAScript Language to ensure optimal conformity.
+Edition of the ECMAScript Language to ensure optimal compliance.
 
 ### Additional methods
 
@@ -69,7 +69,7 @@ Edition of the ECMAScript Language to ensure optimal conformity.
 * euclideanDistance(x1, y1, x2, y2) : [Euclidean distance](http://en.wikipedia.org/wiki/Euclidean_distance)
 * manhattanDistance(x1, y1, x2, y2) : [Manhattan distance](http://en.wikipedia.org/wiki/Manhattan_distance)
 * chebyshevDistance(x1, y1, x2, y2) : [Chebyshev distance](http://en.wikipedia.org/wiki/Chebyshev_distance)
-* minkowskiDistance(x1, y1, x2, y2, p): [Minkowski distance](http://en.wikipedia.org/wiki/Minkowski_distance)
+* minkowskiDistance(x1, y1, x2, y2, p) : [Minkowski distance](http://en.wikipedia.org/wiki/Minkowski_distance)
 
 #### Trigonometry
 
