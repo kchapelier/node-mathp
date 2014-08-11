@@ -66,10 +66,10 @@ Edition of the ECMAScript Language to ensure optimal conformity.
 
 #### Distance
 
-* euclideanDistance(x1, y1, x2, y2)
-* manhattanDistance(x1, y1, x2, y2)
-* chebyshevDistance(x1, y1, x2, y2)
-* minkowskiDistance(x1, y1, x2, y2, p)
+* euclideanDistance(x1, y1, x2, y2) : [Euclidean distance](http://en.wikipedia.org/wiki/Euclidean_distance)
+* manhattanDistance(x1, y1, x2, y2) : [Manhattan distance](http://en.wikipedia.org/wiki/Manhattan_distance)
+* chebyshevDistance(x1, y1, x2, y2) : [Chebyshev distance](http://en.wikipedia.org/wiki/Chebyshev_distance)
+* minkowskiDistance(x1, y1, x2, y2, p): [Minkowski distance](http://en.wikipedia.org/wiki/Minkowski_distance)
 
 #### Trigonometry
 
@@ -129,29 +129,19 @@ var cos120degree = Math.cos(Math.toRadians(120));
 
 ## Changelog
 
-### 0.6.0 (2014.07.24) :
+### 1.0.0 (2014.08.11) :
 
- * New implementations : smoothstep, smootherstep, factorial, sinc, sec, csc, cot, asec, acsc, acot, sech, csch, coth, asech, acsch, acoth.
- * Added properties : PI_2, PI_4 and GOLDEN_RATIO.
- * isFinite() and isNaN() are now direct proxy of the builtin functions.
+ * Fix hypot not having a length of 2 (as per spec).
+ * Fix functions not being named.
+ * Tested and confirmed to work in Titanium.
+ * Declare API stable.
 
-### 0.5.1 (2014.07.16) :
-
- * Fix the negative zero edge cases in the polyfills.
-
-### 0.5.0 (2014.07.15) :
-
- * New implementations : isFinite, median.
- * Cleaner module loading.
-
-### 0.4.0 (2014.07.11) :
- 
- * New implementations : isZero, isPositiveZero, isNegativeZero, isInfinity, isPositiveInfinity, isNegativeInfinity, sign1 and copySign.
- * Fix major issue in wshaper().
+[Full history](https://github.com/kchapelier/node-mathp/blob/master/CHANGELOG.md)
 
 ## Roadmap
 
-* Freeze the API and increment version to 1.0.0
+* Distance functions for N dimensions.
+* Investigate making a browser build.
 
 ## Acknowledgement
 

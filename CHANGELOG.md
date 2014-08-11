@@ -1,6 +1,6 @@
-### Changelog
+# Mathp - Changelog
 
-### 1.0.0 (...) :
+### 1.0.0 (2014/08/11) :
 
  * Fix hypot not having a length of 2 (as per spec).
  * Fix functions not being named.
@@ -23,6 +23,6 @@
  * Cleaner module loading.
 
 ### 0.4.0 (2014.07.11) :
- 
+
  * New implementations : isZero, isPositiveZero, isNegativeZero, isInfinity, isPositiveInfinity, isNegativeInfinity, sign1 and copySign.
  * Fix major issue in wshaper().

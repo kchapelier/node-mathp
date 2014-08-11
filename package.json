@@ -1,6 +1,6 @@
 {
   "name": "mathp",
-  "version": "0.6.0",
+  "version": "1.0.0",
   "description": "Math utility (ES6 polyfills and additional methods)",
   "homepage": "https://github.com/kchapelier/node-mathp",
   "main": "index.js",
@@ -15,7 +15,7 @@
     "math", "polyfill", "distance", "trigonometry"
   ],
   "devDependencies": {
-    "mocha" : "1.20.x",
+    "mocha" : "1.21.x",
     "chai" : "1.9.x",
     "benchmark" : "1.0.x"
   },
