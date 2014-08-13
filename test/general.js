@@ -150,6 +150,30 @@ describe('General', function() {
 		});
 	});
 
+	describe('#step()', function() {
+		it('should return NaN if at least one argument is NaN', function() {
+			Mathp.step(NaN, 0).should.be.NaN;
+			Mathp.step(0, NaN).should.be.NaN;
+			Mathp.step('toto', 0).should.be.NaN;
+			Mathp.step(0, 'toto').should.be.NaN;
+		});
+
+		it('should return 1 if value > step', function() {
+			Mathp.step(0, 1).should.equal(1);
+			Mathp.step(100, 110).should.equal(1);
+		});
+
+		it('should return 1 if value == step', function() {
+			Mathp.step(0, 0).should.equal(1);
+			Mathp.step(100, 100).should.equal(1);
+		});
+
+		it('should return 0 if value < step', function() {
+			Mathp.step(0, -1).should.equal(0);
+			Mathp.step(100, 90).should.equal(0);
+		});
+	});
+
 	describe('#factorial()', function() {
 		it('should return NaN if the argument is not a positive integer', function () {
 			Mathp.factorial(NaN).should.be.NaN;
