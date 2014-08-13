@@ -57,4 +57,123 @@ describe('Distance', function(){
 			Mathp.chebyshevDistance(-10.2, -10, 10, 10).should.equal(20.2);
 		});
 	});
+
+	//TODO missing minkowskiDistance tests
+	//TODO double check the tests
+
+	describe('#euclideanDistanceN()', function() {
+		it('should return NaN if the twos arguments are not of the same length', function() {
+			Mathp.euclideanDistanceN([1], [1, 0]).should.be.NaN;
+			Mathp.euclideanDistanceN([1, 0], [0]).should.be.NaN;
+		});
+
+		it('should work correctly with 1D points', function() {
+			Mathp.euclideanDistanceN([0], [0]).should.equal(0);
+			Mathp.euclideanDistanceN([0], [1.5]).should.equal(1.5);
+			Mathp.euclideanDistanceN([-3], [3]).should.equal(6);
+		});
+
+		it('should work correctly with 2D points', function() {
+			Mathp.euclideanDistanceN([0, 0], [0, 0]).should.equal(0);
+			Mathp.euclideanDistanceN([0, 0], [0, 1.5]).should.equal(1.5);
+			Mathp.euclideanDistanceN([-10.2, -10], [10, 10]).should.equalFloat(28.426044395940846);
+		});
+
+		it('should work correctly with 3D points', function() {
+			Mathp.euclideanDistanceN([0, 0, 0], [0, 0, 0]).should.equal(0);
+			Mathp.euclideanDistanceN([0, 0, 0], [0, 0, 1.5]).should.equal(1.5);
+			Mathp.euclideanDistanceN([3, 10, 0], [0, 5, 5]).should.equalFloat(7.681145747868608);
+		});
+	});
+
+	describe('#manhattanDistanceN()', function() {
+		it('should return NaN if the twos arguments are not of the same length', function() {
+			Mathp.manhattanDistanceN([1], [1, 0]).should.be.NaN;
+			Mathp.manhattanDistanceN([1, 0], [0]).should.be.NaN;
+		});
+
+		it('should work correctly with 1D points', function() {
+			Mathp.manhattanDistanceN([0], [0]).should.equal(0);
+			Mathp.manhattanDistanceN([0], [1.5]).should.equal(1.5);
+			Mathp.manhattanDistanceN([-3], [3]).should.equal(6);
+		});
+
+		it('should work correctly with 2D points', function() {
+			Mathp.manhattanDistanceN([0, 0], [0, 0]).should.equal(0);
+			Mathp.manhattanDistanceN([0, 0], [0, 1.5]).should.equal(1.5);
+			Mathp.manhattanDistanceN([2, 10.5], [0, 5]).should.equal(7.5);
+		});
+
+		it('should work correctly with 3D points', function() {
+			Mathp.manhattanDistanceN([0, 0, 0], [0, 0, 0]).should.equal(0);
+			Mathp.manhattanDistanceN([0, 0, 0], [0, 0, 1.5]).should.equal(1.5);
+			Mathp.manhattanDistanceN([3, 10, 0], [0, 5, 5]).should.equal(13);
+		});
+	});
+
+	describe('#chebyshevDistanceN()', function() {
+		it('should return NaN if the twos arguments are not of the same length', function() {
+			Mathp.chebyshevDistanceN([1], [1, 0]).should.be.NaN;
+			Mathp.chebyshevDistanceN([1, 0], [0]).should.be.NaN;
+		});
+
+		it('should work correctly with 1D points', function() {
+			Mathp.chebyshevDistanceN([0], [0]).should.equal(0);
+			Mathp.chebyshevDistanceN([0], [1.5]).should.equal(1.5);
+			Mathp.chebyshevDistanceN([-3], [3]).should.equal(6);
+		});
+
+		it('should work correctly with 2D points', function() {
+			Mathp.chebyshevDistanceN([0, 0], [0, 0]).should.equal(0);
+			Mathp.chebyshevDistanceN([0, 0], [0, 1.5]).should.equal(1.5);
+			Mathp.chebyshevDistanceN([2, 10.5], [0, 5]).should.equal(5.5);
+		});
+
+		it('should work correctly with 3D points', function() {
+			Mathp.chebyshevDistanceN([0, 0, 0], [0, 0, 0]).should.equal(0);
+			Mathp.chebyshevDistanceN([0, 0, 0], [0, 0, 1.5]).should.equal(1.5);
+			Mathp.chebyshevDistanceN([3, 10, 0], [0, 5, 5]).should.equal(5);
+		});
+	});
+
+	describe('#minkowskiDistanceN()', function() {
+		it('should return NaN if the twos arguments are not of the same length', function() {
+			Mathp.minkowskiDistanceN([1], [1, 0], 3).should.be.NaN;
+			Mathp.minkowskiDistanceN([1, 0], [0], 3).should.be.NaN;
+		});
+
+		it('should be the same as manhattan distance at order 1', function() {
+			var minkowski = Mathp.minkowskiDistanceN.bind(Mathp),
+				manhattan = Mathp.manhattanDistanceN.bind(Mathp);
+
+			minkowski([1, 2], [2, 3], 1).should.equal(manhattan([1, 2], [2, 3]));
+			minkowski([1, 2, 5, 20], [2, 3, 4, 6], 1).should.equal(manhattan([1, 2, 5, 20], [2, 3, 4, 6]));
+		});
+
+		it('should be the same as euclidean distance at order 2', function() {
+			var minkowski = Mathp.minkowskiDistanceN.bind(Mathp),
+				euclidean = Mathp.euclideanDistanceN.bind(Mathp);
+
+			minkowski([1, 2], [2, 3], 2).should.equal(euclidean([1, 2], [2, 3]));
+			minkowski([1, 2, 5, 20], [2, 3, 4, 6], 2).should.equal(euclidean([1, 2, 5, 20], [2, 3, 4, 6]));
+		});
+
+		it('should work correctly with 1D points', function() {
+			Mathp.minkowskiDistanceN([0], [0], 3).should.equal(0);
+			Mathp.minkowskiDistanceN([0], [1.5], 3).should.equalFloat(1.5);
+			Mathp.minkowskiDistanceN([-3], [3], 3).should.equalFloat(6);
+		});
+
+		it('should work correctly with 2D points', function() {
+			Mathp.minkowskiDistanceN([0, 0], [0, 0], 3).should.equal(0);
+			Mathp.minkowskiDistanceN([0, 0], [0, 1.5], 3).should.equalFloat(1.5);
+			Mathp.minkowskiDistanceN([2, 10.5], [0, 5], 3).should.equalFloat(5.586777904672785);
+		});
+
+		it('should work correctly with 3D points', function() {
+			Mathp.minkowskiDistanceN([0, 0, 0], [0, 0, 0], 5).should.equal(0);
+			Mathp.minkowskiDistanceN([0, 0, 0], [0, 0, 1.5], 5).should.equalFloat(1.5);
+			Mathp.minkowskiDistanceN([3, 10, 0], [0, 5, 5], 5).should.equalFloat(5.787474367736346);
+		});
+	});
 });
