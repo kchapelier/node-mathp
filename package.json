@@ -9,18 +9,24 @@
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha test/",
-    "benchmark": "node ./benchmark/index.js"
+    //"benchmark": "node ./benchmark/index.js",
+    "build": "./node_modules/.bin/gulp build"
   },
   "keywords": [
-    "math", "polyfill", "distance", "trigonometry"
+    "math",
+    "polyfill",
+    "distance",
+    "trigonometry"
   ],
   "devDependencies": {
-    "mocha" : "1.21.x",
-    "chai" : "1.9.x",
-    "benchmark" : "1.0.x"
+    "benchmark": "1.0.x",
+    "chai": "1.9.x",
+    "gulp": "3.8.x",
+    "gulp-concat-util": "0.4.x",
+    "mocha": "1.21.x"
   },
   "author": {
-    "name" : "Kevin Chapelier"
+    "name": "Kevin Chapelier"
   },
   "repository": {
     "type": "git",
