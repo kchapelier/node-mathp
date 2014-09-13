@@ -1,5 +1,11 @@
 # Mathp - Changelog
 
+### 1.1.0 (2014.09.13) :
+
+ * New implementations : step, euclideanDistanceN, manhattanDistanceN, chebyshevDistanceN and minkowskiDistanceN.
+ * Bind the methods to the object.
+ * Add a generic build script which generate a single file CommonJS module (useful for Titanium on Android).
+
 ### 1.0.0 (2014/08/11) :
 
  * Fix hypot not having a length of 2 (as per spec).

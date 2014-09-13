@@ -61,15 +61,20 @@ Edition of the ECMAScript Language to ensure optimal compliance.
 * limit(value, min, max)
 * scale(value, origMin, origMax, destMin, destMax)
 * factorial(value)
+* step(step, value)
 * smoothstep(min, max, value)
 * smootherstep(min, max, value)
 
 #### Distance
 
 * euclideanDistance(x1, y1, x2, y2) : [Euclidean distance](http://en.wikipedia.org/wiki/Euclidean_distance)
+* euclideanDistanceN(point1, point2) : Euclidean distance for N dimension(s)
 * manhattanDistance(x1, y1, x2, y2) : [Manhattan distance](http://en.wikipedia.org/wiki/Manhattan_distance)
+* manhattanDistanceN(point1, point2) : Manhattan distance for N dimension(s)
 * chebyshevDistance(x1, y1, x2, y2) : [Chebyshev distance](http://en.wikipedia.org/wiki/Chebyshev_distance)
+* chebyshevDistanceN(point1, point2) : Chebyshev distance for N dimension(s)
 * minkowskiDistance(x1, y1, x2, y2, p) : [Minkowski distance](http://en.wikipedia.org/wiki/Minkowski_distance)
+* minkowskiDistanceN(point1, point2, p) : Minkowski distance for N dimension(s)
 
 #### Trigonometry
 
@@ -129,6 +134,12 @@ var cos120degree = Math.cos(Math.toRadians(120));
 
 ## Changelog
 
+### 1.1.0 (2014.09.13) :
+
+ * New implementations : step, euclideanDistanceN, manhattanDistanceN, chebyshevDistanceN and minkowskiDistanceN.
+ * Bind the methods to the object.
+ * Add a generic build script which generate a single file CommonJS module (useful for Titanium on Android).
+
 ### 1.0.0 (2014.08.11) :
 
  * Fix hypot not having a length of 2 (as per spec).
@@ -140,8 +151,7 @@ var cos120degree = Math.cos(Math.toRadians(120));
 
 ## Roadmap
 
-* Distance functions for N dimensions.
-* Investigate making a browser build.
+* Get the generated build to use the UMD pattern.
 
 ## Acknowledgement
 
