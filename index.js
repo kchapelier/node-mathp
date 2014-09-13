@@ -1,12 +1,33 @@
+/* Object elements retrieval */
+
+var polyfill = require('./lib/polyfill'),
+	check = require('./lib/check'),
+	properties = require('./lib/properties'),
+	general = require('./lib/general'),
+	trigonometry = require('./lib/trigonometry'),
+	mean = require('./lib/mean'),
+	distance = require('./lib/distance'),
+	conversion = require('./lib/conversion'),
+	extra = require('./lib/extra');
+
+/* Object elements retrieval end */
+
+
+/* Object composition */
+
 var Mathp = {};
 
-var importFunctions = function(obj, functions) {
-	functions = functions || Object.keys(obj);
+var importFunctions = function(obj, properties) {
+	properties = properties || Object.keys(obj);
 
-	for(var i = 0; i < functions.length; i++) {
-		var key = functions[i];
+	for(var i = 0; i < properties.length; i++) {
+		var key = properties[i];
 		if(obj.hasOwnProperty(key) && !Mathp.hasOwnProperty(key)) {
-			Mathp[key] = obj[key];
+			if(typeof obj[key] === 'function') {
+				Mathp[key] = obj[key].bind(Mathp);
+			} else {
+				Mathp[key] = obj[key];
+			}
 		}
 	}
 };
@@ -20,14 +41,17 @@ var mathProperties = [
 ];
 
 importFunctions(Math, mathProperties);
-importFunctions(require('./lib/polyfill'));
-importFunctions(require('./lib/check'));
-importFunctions(require('./lib/properties'));
-importFunctions(require('./lib/general'));
-importFunctions(require('./lib/trigonometry'));
-importFunctions(require('./lib/mean'));
-importFunctions(require('./lib/distance'));
-importFunctions(require('./lib/conversion'));
-importFunctions(require('./lib/extra'));
+importFunctions(polyfill);
+importFunctions(check);
+importFunctions(properties);
+importFunctions(general);
+importFunctions(trigonometry);
+importFunctions(mean);
+importFunctions(distance);
+importFunctions(conversion);
+importFunctions(extra);
+
+/* Object composition end */
+
 
 module.exports = Mathp;
