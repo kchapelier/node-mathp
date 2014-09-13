@@ -58,11 +58,41 @@ describe('Distance', function(){
 		});
 	});
 
-	//TODO missing minkowskiDistance tests
-	//TODO double check the tests
+	describe('#minkowskiDistance()', function() {
+		it('should be the same as manhattan distance at order 1', function() {
+			var minkowski = Mathp.minkowskiDistance.bind(Mathp),
+				manhattan = Mathp.manhattanDistance.bind(Mathp);
+
+			minkowski(1, 2, 2, 3, 1).should.equal(manhattan(1, 2, 2, 3));
+			minkowski(1, 2, 5, 20, 1).should.equal(manhattan(1, 2, 5, 20));
+		});
+
+		it('should be the same as euclidean distance at order 2', function() {
+			var minkowski = Mathp.minkowskiDistance.bind(Mathp),
+				euclidean = Mathp.euclideanDistance.bind(Mathp);
+
+			minkowski(1, 2, 2, 3, 2).should.equal(euclidean(1, 2, 2, 3));
+			minkowski(1, 2, 5, 20, 2).should.equal(euclidean(1, 2, 5, 20));
+		});
+
+		it('should work correctly on all axis', function() {
+			Mathp.minkowskiDistance(0, 0, 0, 0, 3).should.equal(0);
+			Mathp.minkowskiDistance(0, 0, 0, 1, 3).should.equal(1);
+			Mathp.minkowskiDistance(0, 0, 1, 0, 3).should.equal(1);
+			Mathp.minkowskiDistance(0, 0, 1, 1, 3).should.equalFloat(1.2599210498948732);
+			Mathp.minkowskiDistance(0, 0, 0, -1, 3).should.equal(1);
+			Mathp.minkowskiDistance(0, 0, -1, 0, 3).should.equal(1);
+			Mathp.minkowskiDistance(0, 0, -1, -1, 3).should.equalFloat(1.2599210498948732);
+		});
+
+		it('should works correctly with float values', function() {
+			Mathp.minkowskiDistance(2, 10.5, 2, 5, 4).should.equal(5.5);
+			Mathp.minkowskiDistance(-10, -10, 10, 10, 2.5).should.equalFloat(26.39015821545789);
+		});
+	});
 
 	describe('#euclideanDistanceN()', function() {
-		it('should return NaN if the twos arguments are not of the same length', function() {
+		it('should return NaN if the two arguments are not of the same length', function() {
 			Mathp.euclideanDistanceN([1], [1, 0]).should.be.NaN;
 			Mathp.euclideanDistanceN([1, 0], [0]).should.be.NaN;
 		});
@@ -87,7 +117,7 @@ describe('Distance', function(){
 	});
 
 	describe('#manhattanDistanceN()', function() {
-		it('should return NaN if the twos arguments are not of the same length', function() {
+		it('should return NaN if the two arguments are not of the same length', function() {
 			Mathp.manhattanDistanceN([1], [1, 0]).should.be.NaN;
 			Mathp.manhattanDistanceN([1, 0], [0]).should.be.NaN;
 		});
@@ -112,7 +142,7 @@ describe('Distance', function(){
 	});
 
 	describe('#chebyshevDistanceN()', function() {
-		it('should return NaN if the twos arguments are not of the same length', function() {
+		it('should return NaN if the two arguments are not of the same length', function() {
 			Mathp.chebyshevDistanceN([1], [1, 0]).should.be.NaN;
 			Mathp.chebyshevDistanceN([1, 0], [0]).should.be.NaN;
 		});
@@ -137,22 +167,22 @@ describe('Distance', function(){
 	});
 
 	describe('#minkowskiDistanceN()', function() {
-		it('should return NaN if the twos arguments are not of the same length', function() {
+		it('should return NaN if the two arguments are not of the same length', function() {
 			Mathp.minkowskiDistanceN([1], [1, 0], 3).should.be.NaN;
 			Mathp.minkowskiDistanceN([1, 0], [0], 3).should.be.NaN;
 		});
 
 		it('should be the same as manhattan distance at order 1', function() {
-			var minkowski = Mathp.minkowskiDistanceN.bind(Mathp),
-				manhattan = Mathp.manhattanDistanceN.bind(Mathp);
+			var minkowski = Mathp.minkowskiDistanceN,
+				manhattan = Mathp.manhattanDistanceN;
 
 			minkowski([1, 2], [2, 3], 1).should.equal(manhattan([1, 2], [2, 3]));
 			minkowski([1, 2, 5, 20], [2, 3, 4, 6], 1).should.equal(manhattan([1, 2, 5, 20], [2, 3, 4, 6]));
 		});
 
 		it('should be the same as euclidean distance at order 2', function() {
-			var minkowski = Mathp.minkowskiDistanceN.bind(Mathp),
-				euclidean = Mathp.euclideanDistanceN.bind(Mathp);
+			var minkowski = Mathp.minkowskiDistanceN,
+				euclidean = Mathp.euclideanDistanceN;
 
 			minkowski([1, 2], [2, 3], 2).should.equal(euclidean([1, 2], [2, 3]));
 			minkowski([1, 2, 5, 20], [2, 3, 4, 6], 2).should.equal(euclidean([1, 2, 5, 20], [2, 3, 4, 6]));
