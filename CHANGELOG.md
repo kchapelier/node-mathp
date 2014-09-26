@@ -1,5 +1,10 @@
 # Mathp - Changelog
 
+### 1.1.1 (2014.09.26) :
+
+ * Get the generated build to use the UMD pattern.
+ * Make properties read only.
+
 ### 1.1.0 (2014.09.13) :
 
  * New implementations : step, euclideanDistanceN, manhattanDistanceN, chebyshevDistanceN and minkowskiDistanceN.

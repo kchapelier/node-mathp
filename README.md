@@ -134,24 +134,22 @@ var cos120degree = Math.cos(Math.toRadians(120));
 
 ## Changelog
 
+### 1.1.1 (2014.09.26) :
+
+ * Get the generated build to use the UMD pattern.
+ * Make properties read only.
+
 ### 1.1.0 (2014.09.13) :
 
  * New implementations : step, euclideanDistanceN, manhattanDistanceN, chebyshevDistanceN and minkowskiDistanceN.
  * Bind the methods to the object.
  * Add a generic build script which generate a single file CommonJS module (useful for Titanium on Android).
 
-### 1.0.0 (2014.08.11) :
-
- * Fix hypot not having a length of 2 (as per spec).
- * Fix functions not being named.
- * Tested and confirmed to work in Titanium.
- * Declare API stable.
-
 [Full history](https://github.com/kchapelier/node-mathp/blob/master/CHANGELOG.md)
 
 ## Roadmap
 
-* Get the generated build to use the UMD pattern.
+* Write better doc.
 
 ## Acknowledgement
 
