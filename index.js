@@ -26,7 +26,11 @@ var importFunctions = function(obj, properties) {
 			if(typeof obj[key] === 'function') {
 				Mathp[key] = obj[key].bind(Mathp);
 			} else {
-				Mathp[key] = obj[key];
+				Object.defineProperty(Mathp, key, {
+					enumerable : true,
+					writable : false,
+					value : obj[key]
+				});
 			}
 		}
 	}
