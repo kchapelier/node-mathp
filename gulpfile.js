@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat-util');
+var fs = require('fs');
 
 gulp.task('build', function() {
 	gulp.src(['./lib/*.js', './index.js'])
@@ -18,7 +19,7 @@ gulp.task('build', function() {
 					.replace(/\n\t(\n|$)/g, '\n\n');
 			}
 		}))
-		.pipe(concat.header('(function() {\n\t"use strict";\n'))
-		.pipe(concat.footer('\n\tmodule.exports = Mathp;\n}());'))
+		.pipe(concat.header(fs.readFileSync('build/template/header')))
+		.pipe(concat.footer(fs.readFileSync('build/template/footer')))
 		.pipe(gulp.dest('build'));
 });

@@ -1,4 +1,17 @@
-(function() {
+(function (root, factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as an anonymous module.
+		define([], factory);
+	} else if (typeof exports === 'object') {
+		// Node. Does not work with strict CommonJS, but
+		// only CommonJS-like environments that support module.exports,
+		// like Node.
+		module.exports = factory();
+	} else {
+		// Browser globals (root is window)
+		root.Mathp = factory();
+	}
+}(this, function () {
 	"use strict";
 
 	var check = {
@@ -511,7 +524,11 @@
 				if(typeof obj[key] === 'function') {
 					Mathp[key] = obj[key].bind(Mathp);
 				} else {
-					Mathp[key] = obj[key];
+					Object.defineProperty(Mathp, key, {
+						enumerable : true,
+						writable : false,
+						value : obj[key]
+					});
 				}
 			}
 		}
@@ -539,5 +556,7 @@
 	/* Object composition end */
 
 
-	module.exports = Mathp;
-}());
+
+	return Mathp;
+
+}));
