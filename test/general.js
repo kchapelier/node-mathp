@@ -190,4 +190,26 @@ describe('General', function() {
 			Mathp.factorial(10).should.equal(3628800);
 		});
 	});
+
+	describe('#toPrecision()', function() {
+		it('should return NaN if the first argument is not a number', function() {
+			Mathp.toPrecision(NaN, 2).should.be.NaN;
+			Mathp.toPrecision('toto', 2).should.be.NaN;
+			Mathp.toPrecision(undefined, 2).should.be.NaN;
+		});
+
+		it('should throw en error if the precision is not within the 1 to 21 range', function() {
+			(function() { Mathp.toPrecision(0, 0); }).should.throw(/must be between 1 and 21/);
+			(function() { Mathp.toPrecision(0, -1); }).should.throw(/must be between 1 and 21/);
+			(function() { Mathp.toPrecision(0, 22); }).should.throw(/must be between 1 and 21/);
+		});
+
+		it('should round to precision as expected', function() {
+			Mathp.toPrecision(1, 1).should.equal(1);
+			Mathp.toPrecision(1.5, 1).should.equal(2);
+			Mathp.toPrecision(1.58, 2).should.equal(1.6);
+			Mathp.toPrecision(1.58, 2.9).should.equal(1.6);
+			Mathp.toPrecision(-1.8888, 3).should.equal(-1.89);
+		});
+	});
 });
