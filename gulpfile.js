@@ -8,7 +8,7 @@ var gulp = require('gulp'),
     stylish = require('jshint-stylish'),
     mocha = require('gulp-mocha');
 
-var files = ['./lib/*.js', './gulpfile.js'];
+var files = ['./index.js', './lib/*.js', './gulpfile.js'];
 
 gulp.task('lint', function () {
     return gulp
@@ -42,8 +42,8 @@ gulp.task('build', function () {
                     .replace(/[\r\n]*.*"use strict";?.*[\r\n]*/g, '\n')
                     // Remove all module.exports
                     .replace(/[\r\n]*.*module.exports.*[\r\n]*/g, '\n')
-                    // Add a tab at the beginning of every lines
-                    .replace(/(^|\r*\n)/g, '\n\t')
+                    // Add an indent level at the beginning of every lines
+                    .replace(/(^|\r*\n)/g, '\n    ')
                     // Remove orphan tabs
                     .replace(/\n\t(\n|$)/g, '\n\n');
             }
