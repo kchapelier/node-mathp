@@ -213,81 +213,81 @@ describe('General', function() {
 		});
 	});
 
-	describe('#moduloEuclidean()', function() {
+	describe('#euclideanModulo()', function() {
 		it('should return NaN if any of the argument is NaN', function() {
-			Mathp.moduloEuclidean().should.be.NaN;
-			Mathp.moduloEuclidean(1, NaN).should.be.NaN;
-			Mathp.moduloEuclidean(NaN, 1).should.be.NaN;
-			Mathp.moduloEuclidean(1, 'toto').should.be.NaN;
-			Mathp.moduloEuclidean('toto', 1).should.be.NaN;
+			Mathp.euclideanModulo().should.be.NaN;
+			Mathp.euclideanModulo(1, NaN).should.be.NaN;
+			Mathp.euclideanModulo(NaN, 1).should.be.NaN;
+			Mathp.euclideanModulo(1, 'toto').should.be.NaN;
+			Mathp.euclideanModulo('toto', 1).should.be.NaN;
 		});
 
 		it('should return a positive value with a positive dividend and a positive divisor', function () {
-			Mathp.moduloEuclidean(5, 3).should.equal(2);
+			Mathp.euclideanModulo(5, 3).should.equal(2);
 		});
 
 		it('should return a positive value with a negative dividend and a positive divisor', function () {
-			Mathp.moduloEuclidean(-5, 3).should.equal(1);
+			Mathp.euclideanModulo(-5, 3).should.equal(1);
 		});
 
 		it('should return a positive value with a positive dividend and a negative divisor', function () {
-			Mathp.moduloEuclidean(5, -3).should.equal(2);
+			Mathp.euclideanModulo(5, -3).should.equal(2);
 		});
 
 		it('should return a positive value with a negative dividend and a negative divisor', function () {
-			Mathp.moduloEuclidean(-5, -3).should.equal(1);
+			Mathp.euclideanModulo(-5, -3).should.equal(1);
 		});
 	});
 
-	describe('#moduloFloored()', function() {
+	describe('#flooredModulo()', function() {
 		it('should return NaN if any of the argument is NaN', function() {
-			Mathp.moduloFloored().should.be.NaN;
-			Mathp.moduloFloored(1, NaN).should.be.NaN;
-			Mathp.moduloFloored(NaN, 1).should.be.NaN;
-			Mathp.moduloFloored(1, 'toto').should.be.NaN;
-			Mathp.moduloFloored('toto', 1).should.be.NaN;
+			Mathp.flooredModulo().should.be.NaN;
+			Mathp.flooredModulo(1, NaN).should.be.NaN;
+			Mathp.flooredModulo(NaN, 1).should.be.NaN;
+			Mathp.flooredModulo(1, 'toto').should.be.NaN;
+			Mathp.flooredModulo('toto', 1).should.be.NaN;
 		});
 
 		it('should return a positive value with a positive dividend and a positive divisor', function () {
-			Mathp.moduloFloored(5, 3).should.equal(2);
+			Mathp.flooredModulo(5, 3).should.equal(2);
 		});
 
 		it('should return a positive value with a negative dividend and a positive divisor', function () {
-			Mathp.moduloFloored(-5, 3).should.equal(1);
+			Mathp.flooredModulo(-5, 3).should.equal(1);
 		});
 
 		it('should return a negative value with a positive dividend and a negative divisor', function () {
-			Mathp.moduloFloored(5, -3).should.equal(-1);
+			Mathp.flooredModulo(5, -3).should.equal(-1);
 		});
 
 		it('should return a negative value with a negative dividend and a negative divisor', function () {
-			Mathp.moduloFloored(-5, -3).should.equal(-2);
+			Mathp.flooredModulo(-5, -3).should.equal(-2);
 		});
 	});
 
-	describe('#moduloTruncated()', function() {
+	describe('#truncatedModulo()', function() {
 		it('should return NaN if any of the argument is NaN', function() {
-			Mathp.moduloTruncated().should.be.NaN;
-			Mathp.moduloTruncated(1, NaN).should.be.NaN;
-			Mathp.moduloTruncated(NaN, 1).should.be.NaN;
-			Mathp.moduloTruncated(1, 'toto').should.be.NaN;
-			Mathp.moduloTruncated('toto', 1).should.be.NaN;
+			Mathp.truncatedModulo().should.be.NaN;
+			Mathp.truncatedModulo(1, NaN).should.be.NaN;
+			Mathp.truncatedModulo(NaN, 1).should.be.NaN;
+			Mathp.truncatedModulo(1, 'toto').should.be.NaN;
+			Mathp.truncatedModulo('toto', 1).should.be.NaN;
 		});
 
 		it('should return a positive value with a positive dividend and a positive divisor', function () {
-			Mathp.moduloTruncated(5, 3).should.equal(2);
+			Mathp.truncatedModulo(5, 3).should.equal(2);
 		});
 
 		it('should return a negative value with a negative dividend and a positive divisor', function () {
-			Mathp.moduloTruncated(-5, 3).should.equal(-2);
+			Mathp.truncatedModulo(-5, 3).should.equal(-2);
 		});
 
 		it('should return a positive value with a positive dividend and a negative divisor', function () {
-			Mathp.moduloTruncated(5, -3).should.equal(2);
+			Mathp.truncatedModulo(5, -3).should.equal(2);
 		});
 
 		it('should return a negative value with a negative dividend and a negative divisor', function () {
-			Mathp.moduloTruncated(-5, -3).should.equal(-2);
+			Mathp.truncatedModulo(-5, -3).should.equal(-2);
 		});
 	});
 });
