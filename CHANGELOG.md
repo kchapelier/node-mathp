@@ -1,5 +1,11 @@
 # Mathp - Changelog
 
+
+### 1.2.0 (2014.12.13) :
+
+ * New implementations : roundToPrecision, euclideanModulo, flooredModulo and truncatedModulo.
+ * Proper linting and codestyle check.
+
 ### 1.1.1 (2014.09.26) :
 
  * Get the generated build to use the UMD pattern.

@@ -64,6 +64,10 @@ Edition of the ECMAScript Language to ensure optimal compliance.
 * step(step, value)
 * smoothstep(min, max, value)
 * smootherstep(min, max, value)
+* roundToPrecision(number, precision)
+* euclideanModulo(dividend, divisor)
+* flooredModulo(dividend, divisor)
+* truncatedModulo(dividend, divisor)
 
 #### Distance
 
@@ -133,6 +137,11 @@ var cos120degree = Math.cos(Math.toRadians(120));
 * Anything that may benefit from some _maths_, and a lot of things do.
 
 ## Changelog
+
+### 1.2.0 (2014.12.13) :
+
+ * New implementations : roundToPrecision, euclideanModulo, flooredModulo and truncatedModulo.
+ * Proper linting and codestyle check.
 
 ### 1.1.1 (2014.09.26) :
 
