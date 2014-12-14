@@ -96,7 +96,7 @@
     
             if (point1.length !== point2.length) {
                 result = NaN;
-            } else {
+            } else if (point1.length) {
                 var values = [];
     
                 for (var i = 0; i < point1.length; i++) {
@@ -233,7 +233,7 @@
         roundToPrecision: function (value, precision) {
             var factor = Math.pow(10, ~~precision);
     
-            return Math.round(Number(value) * factor) / factor;
+            return Math.round(value * factor) / factor;
         },
         /**
          * Returns the remainder of an euclidean division, the result is always positive.
@@ -242,9 +242,9 @@
          * @returns {number}
          */
         euclideanModulo: function (dividend, divisor) {
-            divisor = Math.abs(divisor);
+            var remainder = dividend % divisor;
     
-            return ((dividend % divisor) + divisor) % divisor;
+            return remainder < 0 ? remainder + Math.abs(divisor) : remainder;
         },
         /**
          * Returns the remainder of a floored division, the result has the same sign as the divisor.
