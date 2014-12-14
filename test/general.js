@@ -216,6 +216,13 @@ describe('General', function() {
 			Mathp.euclideanModulo('toto', 1).should.be.NaN;
 		});
 
+		it('should handle 0 and Infinity as a dividend or divisor', function () {
+			Mathp.euclideanModulo(0, 3).should.equal(0);
+			Mathp.euclideanModulo(0, 0).should.be.NaN;
+			Mathp.euclideanModulo(Infinity, 0).should.be.NaN;
+			Mathp.euclideanModulo(-Infinity, 55).should.be.NaN;
+		});
+
 		it('should return a positive value with a positive dividend and a positive divisor', function () {
 			Mathp.euclideanModulo(5, 3).should.equal(2);
 		});
