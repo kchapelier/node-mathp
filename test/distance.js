@@ -122,6 +122,10 @@ describe('Distance', function(){
 			Mathp.manhattanDistanceN([1, 0], [0]).should.be.NaN;
 		});
 
+		it('should return 0 for 0D points', function() {
+			Mathp.manhattanDistanceN([], []).should.equal(0);
+		});
+
 		it('should work correctly with 1D points', function() {
 			Mathp.manhattanDistanceN([0], [0]).should.equal(0);
 			Mathp.manhattanDistanceN([0], [1.5]).should.equal(1.5);
@@ -145,6 +149,10 @@ describe('Distance', function(){
 		it('should return NaN if the two arguments are not of the same length', function() {
 			Mathp.chebyshevDistanceN([1], [1, 0]).should.be.NaN;
 			Mathp.chebyshevDistanceN([1, 0], [0]).should.be.NaN;
+		});
+
+		it('should return 0 for 0D points', function() {
+			Mathp.chebyshevDistanceN([], []).should.equal(0);
 		});
 
 		it('should work correctly with 1D points', function() {
@@ -186,6 +194,10 @@ describe('Distance', function(){
 
 			minkowski([1, 2], [2, 3], 2).should.equal(euclidean([1, 2], [2, 3]));
 			minkowski([1, 2, 5, 20], [2, 3, 4, 6], 2).should.equal(euclidean([1, 2, 5, 20], [2, 3, 4, 6]));
+		});
+
+		it('should return 0 for 0D points', function() {
+			Mathp.minkowskiDistanceN([], [], 3).should.equal(0);
 		});
 
 		it('should work correctly with 1D points', function() {
