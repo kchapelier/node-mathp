@@ -138,6 +138,11 @@ var cos120degree = Math.cos(Math.toRadians(120));
 
 ## Changelog
 
+### 1.2.1 (2014.12.14) :
+
+ * More performant euclideanModulo.
+ * Fix chebyshevDistanceN returning -Infinity in 0d edge case.
+
 ### 1.2.0 (2014.12.13) :
 
  * New implementations : roundToPrecision, euclideanModulo, flooredModulo and truncatedModulo.
