@@ -9,7 +9,6 @@
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha test/",
-    "benchmark": "node ./benchmark/index.js",
     "build": "./node_modules/.bin/gulp build"
   },
   "keywords": [
@@ -19,7 +18,6 @@
     "trigonometry"
   ],
   "devDependencies": {
-    "benchmark": "^1.0.0",
     "chai": "^1.10.0",
     "gulp": "^3.8.10",
     "gulp-concat-util": "^0.5.1",
