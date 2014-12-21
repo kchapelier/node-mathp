@@ -1,5 +1,9 @@
 # Mathp - Changelog
 
+### 1.2.2 (2014.12.21) :
+
+ * More performant chebyshevDistanceN.
+
 ### 1.2.1 (2014.12.14) :
 
  * More performant euclideanModulo.

@@ -138,6 +138,10 @@ var cos120degree = Math.cos(Math.toRadians(120));
 
 ## Changelog
 
+### 1.2.2 (2014.12.21) :
+
+ * More performant chebyshevDistanceN.
+
 ### 1.2.1 (2014.12.14) :
 
  * More performant euclideanModulo.
@@ -147,17 +151,6 @@ var cos120degree = Math.cos(Math.toRadians(120));
 
  * New implementations : roundToPrecision, euclideanModulo, flooredModulo and truncatedModulo.
  * Proper linting and codestyle check.
-
-### 1.1.1 (2014.09.26) :
-
- * Get the generated build to use the UMD pattern.
- * Make properties read only.
-
-### 1.1.0 (2014.09.13) :
-
- * New implementations : step, euclideanDistanceN, manhattanDistanceN, chebyshevDistanceN and minkowskiDistanceN.
- * Bind the methods to the object.
- * Add a generic build script which generate a single file CommonJS module (useful for Titanium on Android).
 
 [Full history](https://github.com/kchapelier/node-mathp/blob/master/CHANGELOG.md)
 

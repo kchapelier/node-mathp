@@ -92,18 +92,13 @@
             return result;
         },
         chebyshevDistanceN: function chebyshevDistanceN (point1, point2) {
-            var result = 0;
-    
             if (point1.length !== point2.length) {
-                result = NaN;
-            } else if (point1.length) {
-                var values = [];
+                return NaN;
+            }
     
-                for (var i = 0; i < point1.length; i++) {
-                    values.push(this.abs(point1[i] - point2[i]));
-                }
-    
-                result = this.max.apply(null, values);
+            var result = 0;
+            for (var i = 0; i < point1.length; i++) {
+                result = this.max(result, this.abs(point1[i] - point2[i]));
             }
     
             return result;
