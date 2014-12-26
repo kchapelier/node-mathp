@@ -1,3 +1,10 @@
+/**
+ * Limit a value to given bounds (aka clamp)
+ * @param value
+ * @param min
+ * @param max
+ * @returns {*}
+ */
 module.exports = function limit (value, min, max) {
     "use strict";
 
