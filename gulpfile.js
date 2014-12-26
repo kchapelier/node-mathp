@@ -8,7 +8,7 @@ var gulp = require('gulp'),
     stylish = require('jshint-stylish'),
     mocha = require('gulp-mocha');
 
-var files = ['./index.js', './lib/*.js', './gulpfile.js'];
+var files = ['./index.js', './lib/*.js', './properties/*.js', './functions/*.js', './gulpfile.js'];
 
 gulp.task('lint', function () {
     return gulp

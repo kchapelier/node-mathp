@@ -11,4 +11,4 @@ module.exports = function lerp (value1, value2, ratio) {
     "use strict";
 
     return ((value2 - value1) * limit(ratio, 0, 1)) + value1;
-}
+};

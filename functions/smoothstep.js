@@ -6,4 +6,4 @@ module.exports = function smoothstep (min, max, value) {
     value = scale(value, min, max, 0, 1);
 
     return value * value * (3 - 2 * value);
-}
+};
