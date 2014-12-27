@@ -1,4 +1,4 @@
-module.exports = function cosh (value) {
+module.exports = Math.cosh || function cosh (value) {
     "use strict";
 
     var y = Math.exp(value);

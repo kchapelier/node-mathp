@@ -1,6 +1,6 @@
 var isNegativeZero = require('./isNegativeZero');
 
-module.exports = function tanh (value) {
+module.exports = Math.tanh || function tanh (value) {
     "use strict";
 
     if (value === Infinity) {

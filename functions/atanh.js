@@ -1,6 +1,6 @@
 var isNegativeZero = require('./isNegativeZero');
 
-module.exports = function atanh (value) {
+module.exports = Math.atanh || function atanh (value) {
     "use strict";
 
     if (isNegativeZero(value)) {

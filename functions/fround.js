@@ -1,4 +1,4 @@
-module.exports = function fround (value) {
+module.exports = Math.fround || function fround (value) {
     "use strict";
 
     var f32 = new Float32Array(1);

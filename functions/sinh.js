@@ -1,6 +1,6 @@
 var isNegativeZero = require('./isNegativeZero');
 
-module.exports = function sinh (value) {
+module.exports = Math.sinh || function sinh (value) {
     "use strict";
 
     if (isNegativeZero(value)) {

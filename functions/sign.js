@@ -1,4 +1,4 @@
-module.exports = function sign (value) {
+module.exports = Math.sign || function sign (value) {
     "use strict";
 
     if (isNaN(value)) {

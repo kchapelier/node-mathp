@@ -1,6 +1,6 @@
 var isNegativeZero = require('./isNegativeZero');
 
-module.exports = function asinh (value) {
+module.exports = Math.asinh || function asinh (value) {
     "use strict";
 
     if (value === -Infinity || isNegativeZero(value)) {

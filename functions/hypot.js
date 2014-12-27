@@ -1,4 +1,4 @@
-module.exports = function hypot (value1, value2) {
+module.exports = Math.hypot || function hypot (value1, value2) {
     "use strict";
 
     var y = 0;

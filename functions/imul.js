@@ -1,4 +1,4 @@
-module.exports = function imul (value1, value2) {
+module.exports = Math.imul || function imul (value1, value2) {
     "use strict";
 
     var ah = (value1 >>> 16) & 0xffff;

@@ -1,6 +1,6 @@
 var sign = require('./sign');
 
-module.exports = function cbrt (value) {
+module.exports = Math.cbrt || function cbrt (value) {
     "use strict";
 
     var y = Math.pow(Math.abs(value), 1 / 3);

@@ -1,6 +1,6 @@
 var isNegativeZero = require('./isNegativeZero');
 
-module.exports = function expm1 (value) {
+module.exports = Math.expm1 || function expm1 (value) {
     "use strict";
 
     if (isNegativeZero(value)) {

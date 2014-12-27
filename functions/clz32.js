@@ -1,4 +1,4 @@
-module.exports = function clz32 (value) {
+module.exports = Math.clz32 || function clz32 (value) {
     "use strict";
 
     value = Number(value) >>> 0;
