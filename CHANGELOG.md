@@ -1,6 +1,6 @@
 # Mathp - Changelog
 
-### 1.2.3 (2014.01.04) :
+### 1.2.3 (2015.01.04) :
 
  * Much better performances overall by avoiding function bindings ( see [relevant issue](https://github.com/kchapelier/node-mathp/issues/4) ).
  * _Deep requires_ are now possible ( i.e. : `var dist = require('mathp/functions/euclideanDistance')` ).
