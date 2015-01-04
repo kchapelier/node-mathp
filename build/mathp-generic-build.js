@@ -157,7 +157,7 @@ importProperties(additionalFunctions);
 importProperties(additionalProperties);
 
 
-module.exports = /*require('./build/mathp-generic-build.min.js'); */Mathp;
+module.exports = Mathp;
 
 },{"./functions/acosh":2,"./functions/acot":3,"./functions/acoth":4,"./functions/acsc":5,"./functions/acsch":6,"./functions/amean":7,"./functions/asec":8,"./functions/asech":9,"./functions/asinh":10,"./functions/atanh":11,"./functions/cbrt":12,"./functions/chebyshevDistance":13,"./functions/chebyshevDistanceN":14,"./functions/clz32":15,"./functions/copySign":16,"./functions/cosh":17,"./functions/cot":18,"./functions/coth":19,"./functions/csc":20,"./functions/csch":21,"./functions/euclideanDistance":22,"./functions/euclideanDistanceN":23,"./functions/euclideanModulo":24,"./functions/expm1":25,"./functions/factorial":26,"./functions/flooredModulo":27,"./functions/fround":28,"./functions/gmean":29,"./functions/hmean":30,"./functions/hypot":31,"./functions/imul":32,"./functions/isFinite":33,"./functions/isInfinity":34,"./functions/isNaN":35,"./functions/isNegativeInfinity":36,"./functions/isNegativeZero":37,"./functions/isPositiveInfinity":38,"./functions/isPositiveZero":39,"./functions/isZero":40,"./functions/lerp":41,"./functions/limit":42,"./functions/log10":43,"./functions/log1p":44,"./functions/log2":45,"./functions/manhattanDistance":46,"./functions/manhattanDistanceN":47,"./functions/median":48,"./functions/minkowskiDistance":49,"./functions/minkowskiDistanceN":50,"./functions/rms":51,"./functions/roundToPrecision":52,"./functions/scale":53,"./functions/sec":54,"./functions/sech":55,"./functions/sign":56,"./functions/sign1":57,"./functions/sinc":58,"./functions/sinh":59,"./functions/smootherstep":60,"./functions/smoothstep":61,"./functions/step":62,"./functions/tanh":63,"./functions/toDegrees":64,"./functions/toRadians":65,"./functions/trunc":66,"./functions/truncatedModulo":67,"./functions/wshaper":68,"./properties/golden_ratio":69,"./properties/pi_2":70,"./properties/pi_4":71}],2:[function(require,module,exports){
 module.exports = Math.acosh || function acosh (value) {
@@ -299,7 +299,7 @@ module.exports = function chebyshevDistanceN (point1, point2) {
 module.exports = Math.clz32 || function clz32 (value) {
     "use strict";
 
-    value = Number(value) >>> 0;
+    value = value >>> 0;
     return value ? 32 - value.toString(2).length : 32;
 };
 
@@ -805,7 +805,7 @@ module.exports = function sign1 (value) {
 
     if (isNaN(value)) {
         return NaN;
-    } else if (value > 0 || isPositiveZero(value) || value === Infinity) {
+    } else if (value > 0 || isPositiveZero(value)) {
         return 1;
     } else {
         return -1;

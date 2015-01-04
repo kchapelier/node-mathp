@@ -1,5 +1,12 @@
 # Mathp - Changelog
 
+### 1.2.3 (2014.01.04) :
+
+ * Much better performances overall by avoiding function bindings ( see [relevant issue](https://github.com/kchapelier/node-mathp/issues/4) ).
+ * _Deep requires_ are now possible ( i.e. : `var dist = require('mathp/functions/euclideanDistance')` ).
+ * Slightly more performant sign1 and clz32.
+ * Added automatic tests on Node.js 0.11.x via Travis.
+
 ### 1.2.2 (2014.12.21) :
 
  * More performant chebyshevDistanceN.
