@@ -40,7 +40,11 @@ gulp.task('build', function () {
         .pipe(buffer())
         .pipe(gulp.dest(dest))
         .pipe(rename(filename + '.min.js'))
-        .pipe(uglify())
+        .pipe(uglify({
+            compress : {
+                unused: false //remove unused function's arguments > side effect of modifying the function's length
+            }
+        }))
         .pipe(gulp.dest(dest));
 });
 
