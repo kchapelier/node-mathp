@@ -61,7 +61,7 @@ Edition of the ECMAScript Language to ensure optimal compliance.
 * limit(value, min, max)
 * scale(value, origMin, origMax, destMin, destMax)
 * factorial(value)
-* step(step, value)
+* step(edge, value)
 * smoothstep(min, max, value)
 * smootherstep(min, max, value)
 * roundToPrecision(number, precision)
