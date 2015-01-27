@@ -55,6 +55,7 @@ var polyfillFunctions = {
 var additionalFunctions = {
     // checks
     isNaN: require('./functions/isNaN'),
+    isInteger: require('./functions/isInteger'),
     isZero: require('./functions/isZero'),
     isPositiveZero: require('./functions/isPositiveZero'),
     isNegativeZero: require('./functions/isNegativeZero'),

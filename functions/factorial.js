@@ -1,3 +1,5 @@
+var isInteger = require("./isInteger");
+
 var factorialCache = {
     0: 1,
     1: 1,
@@ -18,7 +20,7 @@ var factorialFunc = function factorialFunc (value) {
 module.exports = function factorial (value) {
     "use strict";
 
-    if (isNaN(value) || value < 0 || value !== Math.floor(value)) { //messy isInteger() and positive
+    if (value < 0 || !isInteger(value)) {
         return NaN;
     }
 
