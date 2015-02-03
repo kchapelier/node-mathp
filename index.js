@@ -56,6 +56,7 @@ var additionalFunctions = {
     // checks
     isNaN: require('./functions/isNaN'),
     isInteger: require('./functions/isInteger'),
+    isSafeInteger: require('./functions/isSafeInteger'),
     isZero: require('./functions/isZero'),
     isPositiveZero: require('./functions/isPositiveZero'),
     isNegativeZero: require('./functions/isNegativeZero'),

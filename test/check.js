@@ -50,10 +50,43 @@ describe('Check', function(){
             Mathp.isInteger(Math.pow(2, 52) + 5000).should.be.true;
         });
 
+        it('should return true even when the argument is greater Math.abs(2^53))', function() {
+            Mathp.isInteger(-9007199254740992).should.be.true;
+            Mathp.isInteger(9007199254740992).should.be.true;
+            Mathp.isInteger(-900719925472423408).should.be.true;
+        });
+    });
+
+    describe('#isSafeInteger()', function() {
+        it('should return false when the argument is not a number', function() {
+            Mathp.isSafeInteger(NaN).should.be.false;
+            Mathp.isSafeInteger('Toto').should.be.false;
+            Mathp.isSafeInteger('5').should.be.false;
+            Mathp.isSafeInteger(null).should.be.false;
+            Mathp.isSafeInteger(undefined).should.be.false;
+        });
+
+        it('should return false when the argument is infinite', function() {
+            Mathp.isSafeInteger(Infinity).should.be.false;
+            Mathp.isSafeInteger(-Infinity).should.be.false;
+        });
+
+        it('should return false when the argument is a float', function() {
+            Mathp.isSafeInteger(0.1).should.be.false;
+            Mathp.isSafeInteger(-0.2).should.be.false;
+            Mathp.isSafeInteger(-32432890823773.2).should.be.false;
+        });
+
+        it('should return true when the argument is an integer', function() {
+            Mathp.isSafeInteger(5).should.be.true;
+            Mathp.isSafeInteger(-Math.pow(2, 52)).should.be.true;
+            Mathp.isSafeInteger(Math.pow(2, 52) + 5000).should.be.true;
+        });
+
         it('should return false when the argument is greater Math.abs(2^53))', function() {
-            Mathp.isInteger(-9007199254740992).should.be.false;
-            Mathp.isInteger(9007199254740992).should.be.false;
-            Mathp.isInteger(-900719925472423408).should.be.false;
+            Mathp.isSafeInteger(-9007199254740992).should.be.false;
+            Mathp.isSafeInteger(9007199254740992).should.be.false;
+            Mathp.isSafeInteger(-900719925472423408).should.be.false;
         });
     });
 
