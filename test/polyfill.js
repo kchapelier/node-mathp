@@ -170,7 +170,7 @@ describe('Polyfill', function(){
 			Mathp.log2(-0).should.equal(-Infinity);
 			Mathp.log2(1).should.be.positiveZero;
 			Mathp.log2(-1).should.be.NaN;
-			Mathp.log2(8).should.equal(3);
+			Mathp.log2(8).should.equalFloat(3);
 			Mathp.log2(Infinity).should.equal(Infinity);
 			Mathp.log2(-Infinity).should.be.NaN;
 		});
