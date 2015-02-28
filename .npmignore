@@ -14,3 +14,11 @@ node_modules
 
 .idea
 notes
+
+#
+build/
+.editorconfig
+.jscsrc
+.jshintrc
+.travis.yml
+.gitignore
