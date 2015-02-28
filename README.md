@@ -138,6 +138,14 @@ var cos120degree = Math.cos(Math.toRadians(120));
 
 ## Changelog
 
+### 1.3.1 (2015.02.28) :
+
+ * Add .editorconfig file
+ * Removed the builds and other unecessary files from the package download from npm
+ * Updated dev dependencies
+ * Added automatic tests on Node.js 0.12.x and io.js via Travis
+ * Removed automatic tests on Node.js 0.11.x via Travis
+
 ### 1.3.0 (2015.02.03) :
 
  * New implementations : isInteger, isSafeInteger
