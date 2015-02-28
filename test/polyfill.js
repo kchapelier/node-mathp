@@ -6,9 +6,9 @@ require('chai')
 
 var Mathp = require('../index.js');
 
-describe('Polyfill', function(){
-    describe('#acosh()', function() {
-        it('must match the specifications', function() {
+describe('Polyfill', function () {
+    describe('#acosh()', function () {
+        it('must match the specifications', function () {
             Mathp.acosh(NaN).should.be.NaN;
             Mathp.acosh(0).should.be.NaN;
             Mathp.acosh(-0).should.be.NaN;
@@ -20,8 +20,8 @@ describe('Polyfill', function(){
         });
     });
 
-    describe('#asinh()', function() {
-        it('must match the specifications', function() {
+    describe('#asinh()', function () {
+        it('must match the specifications', function () {
             Mathp.asinh(NaN).should.be.NaN;
             Mathp.asinh(0).should.be.positiveZero;
             Mathp.asinh(-0).should.be.negativeZero;
@@ -32,8 +32,8 @@ describe('Polyfill', function(){
         });
     });
 
-    describe('#atanh()', function() {
-        it('must match the specifications', function() {
+    describe('#atanh()', function () {
+        it('must match the specifications', function () {
             Mathp.atanh(NaN).should.be.NaN;
             Mathp.atanh(0).should.be.positiveZero;
             Mathp.atanh(-0).should.be.negativeZero;
@@ -48,7 +48,7 @@ describe('Polyfill', function(){
         });
     });
 
-    describe('#cbrt()', function() {
+    describe('#cbrt()', function () {
         it('must match the specifications', function () {
             Mathp.cbrt(NaN).should.be.NaN;
             Mathp.cbrt(0).should.be.positiveZero;
@@ -62,7 +62,7 @@ describe('Polyfill', function(){
         });
     });
 
-    describe('#clz32()', function() {
+    describe('#clz32()', function () {
         it('must match the specifications', function () {
             Mathp.clz32(1).should.equal(31);
             Mathp.clz32(1000).should.equal(22);
@@ -77,8 +77,8 @@ describe('Polyfill', function(){
         });
     });
 
-    describe('#cosh()', function() {
-        it('must match the specifications', function() {
+    describe('#cosh()', function () {
+        it('must match the specifications', function () {
             Mathp.cosh(NaN).should.be.NaN;
             Mathp.cosh(0).should.equal(1);
             Mathp.cosh(-0).should.equal(1);
@@ -89,8 +89,8 @@ describe('Polyfill', function(){
         });
     });
 
-    describe('#expm1', function() {
-        it('must match the specifications', function() {
+    describe('#expm1', function () {
+        it('must match the specifications', function () {
             Mathp.expm1(NaN).should.be.NaN;
             Mathp.expm1(0).should.be.positiveZero;
             Mathp.expm1(-0).should.be.negativeZero;
@@ -101,8 +101,8 @@ describe('Polyfill', function(){
         });
     });
 
-    describe('#fround', function() {
-        it('must match the specifications', function() {
+    describe('#fround', function () {
+        it('must match the specifications', function () {
             Mathp.fround(0).should.be.positiveZero;
             Mathp.fround(1).should.equal(1);
             Mathp.fround(1.337).should.equalFloat(1.3370000123977661);
@@ -111,8 +111,8 @@ describe('Polyfill', function(){
         });
     });
 
-    describe('#hypot', function() {
-        it('must match the specifications', function() {
+    describe('#hypot', function () {
+        it('must match the specifications', function () {
             Mathp.hypot().should.be.positiveZero;
             Mathp.hypot(1, Infinity).should.equal(Infinity);
             Mathp.hypot(1, -Infinity).should.equal(Infinity);
@@ -122,13 +122,13 @@ describe('Polyfill', function(){
             Mathp.hypot(0, 0, -0).should.be.positiveZero;
         });
 
-        it('must have a length of 2', function() {
+        it('must have a length of 2', function () {
             Mathp.hypot.length.should.equal(2);
         });
     });
 
-    describe('#imul', function() {
-        it('must match the specifications', function() {
+    describe('#imul', function () {
+        it('must match the specifications', function () {
             Mathp.imul(2, 4).should.equal(8);
             Mathp.imul(-1, 8).should.equal(-8);
             Mathp.imul(-2, -2).should.equal(4);
@@ -137,8 +137,8 @@ describe('Polyfill', function(){
         });
     });
 
-    describe('#log1p', function() {
-        it('must match the specifications', function() {
+    describe('#log1p', function () {
+        it('must match the specifications', function () {
             Mathp.log1p(NaN).should.be.NaN;
             Mathp.log1p(0).should.be.positiveZero;
             Mathp.log1p(-0).should.be.negativeZero;
@@ -150,8 +150,8 @@ describe('Polyfill', function(){
         });
     });
 
-    describe('#log10', function() {
-        it('must match the specifications', function() {
+    describe('#log10', function () {
+        it('must match the specifications', function () {
             Mathp.log10(NaN).should.be.NaN;
             Mathp.log10(0).should.equal(-Infinity);
             Mathp.log10(-0).should.equal(-Infinity);
@@ -163,8 +163,8 @@ describe('Polyfill', function(){
         });
     });
 
-    describe('#log2', function() {
-        it('must match the specifications', function() {
+    describe('#log2', function () {
+        it('must match the specifications', function () {
             Mathp.log2(NaN).should.be.NaN;
             Mathp.log2(0).should.equal(-Infinity);
             Mathp.log2(-0).should.equal(-Infinity);
@@ -176,8 +176,8 @@ describe('Polyfill', function(){
         });
     });
 
-    describe('#sign()', function() {
-        it('must match the specifications', function() {
+    describe('#sign()', function () {
+        it('must match the specifications', function () {
             Mathp.sign(3).should.equal(1);
             Mathp.sign(-3).should.equal(-1);
             Mathp.sign("-3").should.equal(-1);
@@ -191,8 +191,8 @@ describe('Polyfill', function(){
         });
     });
 
-    describe('#sinh()', function() {
-        it('must match the specifications', function() {
+    describe('#sinh()', function () {
+        it('must match the specifications', function () {
             Mathp.sinh(NaN).should.be.NaN;
             Mathp.sinh(0).should.be.positiveZero;
             Mathp.sinh(-0).should.be.negativeZero;
@@ -203,8 +203,8 @@ describe('Polyfill', function(){
         });
     });
 
-    describe('#tanh()', function() {
-        it('must match the specifications', function() {
+    describe('#tanh()', function () {
+        it('must match the specifications', function () {
             Mathp.tanh(NaN).should.be.NaN;
             Mathp.tanh(0).should.be.positiveZero;
             Mathp.tanh(-0).should.be.negativeZero;
@@ -215,8 +215,8 @@ describe('Polyfill', function(){
         });
     });
 
-    describe('#trunc()', function() {
-        it('must match the specifications', function() {
+    describe('#trunc()', function () {
+        it('must match the specifications', function () {
             Mathp.trunc(13.37).should.equal(13);
             Mathp.trunc(42.84).should.equal(42);
             Mathp.trunc(0.123).should.be.positiveZero;

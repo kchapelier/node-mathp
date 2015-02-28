@@ -11,18 +11,20 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename');
 
-var files = ['./index.js', './lib/*.js', './properties/*.js', './functions/*.js', './gulpfile.js'];
+var sourceFiles = ['./index.js', './properties/*.js', './functions/*.js'],
+    buildFiles = ['./gulpfile.js'],
+    testFiles = ['./test/*.js'];
 
 gulp.task('lint', function () {
     return gulp
-        .src(files)
+        .src([].concat(sourceFiles, buildFiles))
         .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter(stylish));
 });
 
 gulp.task('codestyle', function () {
     return gulp
-        .src(files)
+        .src([].concat(sourceFiles, buildFiles, testFiles))
         .pipe(jscs());
 });
 
@@ -41,7 +43,7 @@ gulp.task('build', function () {
         .pipe(gulp.dest(dest))
         .pipe(rename(filename + '.min.js'))
         .pipe(uglify({
-            compress : {
+            compress: {
                 unused: false //remove unused function's arguments > side effect of modifying the function's length
             }
         }))
@@ -50,7 +52,7 @@ gulp.task('build', function () {
 
 gulp.task('test', function () {
     return gulp
-        .src(['./test/*.js'])
+        .src(testFiles)
         .pipe(mocha({
             reporter: 'spec'
         }));

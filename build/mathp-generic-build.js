@@ -549,15 +549,14 @@ module.exports = function isInfinity (value) {
 };
 
 },{}],35:[function(require,module,exports){
-var MAX_SAFE_INT = require('./../properties/max_safe_integer');
+module.exports = Number.isInteger || function (val) {
+    "use strict";
 
-module.exports = Number.isInteger || function(val) {
-    'use strict';
     return typeof val === 'number' &&
         val % 1 === 0;
 };
 
-},{"./../properties/max_safe_integer":72}],36:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 module.exports = isNaN;
 
 },{}],37:[function(require,module,exports){
@@ -591,8 +590,9 @@ module.exports = function isPositiveZero (value) {
 },{}],41:[function(require,module,exports){
 var MAX_SAFE_INT = require('./../properties/max_safe_integer');
 
-module.exports = Number.isSafeInteger || function(val) {
-    'use strict';
+module.exports = Number.isSafeInteger || function (val) {
+    "use strict";
+
     return typeof val === 'number' &&
         val < MAX_SAFE_INT &&
         val > -MAX_SAFE_INT &&

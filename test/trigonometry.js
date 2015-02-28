@@ -6,20 +6,20 @@ require('chai')
 
 var Mathp = require('../index.js');
 
-describe('Trigonometry', function(){
-    describe('#sinc()', function() {
-        it('should return 1 for 0', function() {
+describe('Trigonometry', function () {
+    describe('#sinc()', function () {
+        it('should return 1 for 0', function () {
             Mathp.sinc(0).should.equal(1);
         });
 
-        it('should apply sinc correctly', function() {
+        it('should apply sinc correctly', function () {
             Mathp.sinc(Mathp.PI_2).should.equalFloat(0.6366197723675814);
             Mathp.sinc(3 * Mathp.PI_2).should.equalFloat(-0.2122065907891938);
         });
     });
 
-    describe('#cot()', function() {
-        it('should apply cot correcty', function() {
+    describe('#cot()', function () {
+        it('should apply cot correcty', function () {
             Mathp.cot(-0).should.equal(-Infinity);
             Mathp.cot(0).should.equal(Infinity);
 
@@ -34,8 +34,8 @@ describe('Trigonometry', function(){
         });
     });
 
-    describe('#sec()', function() {
-        it('should apply sec correcty', function() {
+    describe('#sec()', function () {
+        it('should apply sec correcty', function () {
             Mathp.sec(-0).should.equal(1);
             Mathp.sec(0).should.equal(1);
 
@@ -50,8 +50,8 @@ describe('Trigonometry', function(){
         });
     });
 
-    describe('#csc()', function() {
-        it('should apply csc correcty', function() {
+    describe('#csc()', function () {
+        it('should apply csc correcty', function () {
             Mathp.csc(-0).should.equal(-Infinity);
             Mathp.csc(0).should.equal(Infinity);
 
@@ -62,13 +62,12 @@ describe('Trigonometry', function(){
             Mathp.csc(-Infinity).should.be.NaN;
             Mathp.csc(NaN).should.be.NaN;
 
-
             Mathp.csc(Mathp.PI_2).should.equal(1);
         });
     });
 
-    describe('#acot()', function() {
-        it('should apply acot correcty', function() {
+    describe('#acot()', function () {
+        it('should apply acot correcty', function () {
             Mathp.acot(-0).should.equal(-Mathp.PI_2);
             Mathp.acot(0).should.equal(Mathp.PI_2);
 
@@ -81,8 +80,8 @@ describe('Trigonometry', function(){
         });
     });
 
-    describe('#asec()', function() {
-        it('should apply asec correcty', function() {
+    describe('#asec()', function () {
+        it('should apply asec correcty', function () {
             Mathp.asec(-0).should.be.NaN;
             Mathp.asec(0).should.be.NaN;
 
@@ -95,8 +94,8 @@ describe('Trigonometry', function(){
         });
     });
 
-    describe('#acsc()', function() {
-        it('should apply acsc correcty', function() {
+    describe('#acsc()', function () {
+        it('should apply acsc correcty', function () {
             Mathp.acsc(-0).should.be.NaN;
             Mathp.acsc(0).should.be.NaN;
 
@@ -109,8 +108,8 @@ describe('Trigonometry', function(){
         });
     });
 
-    describe('#coth()', function() {
-        it('should apply coth correcty', function() {
+    describe('#coth()', function () {
+        it('should apply coth correcty', function () {
             Mathp.coth(-0).should.equal(-Infinity);
             Mathp.coth(0).should.equal(Infinity);
 
@@ -123,8 +122,8 @@ describe('Trigonometry', function(){
         });
     });
 
-    describe('#sech()', function() {
-        it('should apply sech correcty', function() {
+    describe('#sech()', function () {
+        it('should apply sech correcty', function () {
             Mathp.sech(-0).should.equal(1);
             Mathp.sech(0).should.equal(1);
 
@@ -137,8 +136,8 @@ describe('Trigonometry', function(){
         });
     });
 
-    describe('#csch()', function() {
-        it('should apply csch correcty', function() {
+    describe('#csch()', function () {
+        it('should apply csch correcty', function () {
             Mathp.csch(-0).should.equal(-Infinity);
             Mathp.csch(0).should.equal(Infinity);
 
@@ -151,8 +150,8 @@ describe('Trigonometry', function(){
         });
     });
 
-    describe('#acoth()', function() {
-        it('should apply acoth correcty', function() {
+    describe('#acoth()', function () {
+        it('should apply acoth correcty', function () {
             Mathp.acoth(-0).should.be.NaN;
             Mathp.acoth(0).should.be.NaN;
 
@@ -165,8 +164,8 @@ describe('Trigonometry', function(){
         });
     });
 
-    describe('#asech()', function() {
-        it('should apply asech correcty', function() {
+    describe('#asech()', function () {
+        it('should apply asech correcty', function () {
             Mathp.asech(-0).should.be.NaN;
             Mathp.asech(0).should.be.Infinity;
 
@@ -179,8 +178,8 @@ describe('Trigonometry', function(){
         });
     });
 
-    describe('#acsch()', function() {
-        it('should apply acsch correcty', function() {
+    describe('#acsch()', function () {
+        it('should apply acsch correcty', function () {
             Mathp.acsch(-0).should.equal(-Infinity);
             Mathp.acsch(0).should.equal(Infinity);
 
