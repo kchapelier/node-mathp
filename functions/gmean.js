@@ -6,17 +6,14 @@
 module.exports = function gmean (array) {
     "use strict";
 
-    var value = 0;
-
-    if (array && array.length > 0) {
-        value = 1;
-
-        for (var i = 0; i < array.length; i++) {
-            value *= array[i];
-        }
-
-        value = Math.pow(value, 1 / array.length);
+    if (!array || array.length <= 0) {
+        return 0;
     }
 
-    return value;
+    var value = 1;
+    for (var i = 0; i < array.length; i++) {
+        value *= array[i];
+    }
+
+    return Math.pow(value, 1 / array.length);
 };
