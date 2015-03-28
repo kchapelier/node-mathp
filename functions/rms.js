@@ -6,15 +6,14 @@
 module.exports = function rms (array) {
     "use strict";
 
-    var value = 0;
-
-    if (array && array.length > 0) {
-        for (var i = 0; i < array.length; i++) {
-            value += array[i] * array[i];
-        }
-
-        value = Math.sqrt(value / array.length);
+    if (!array || array.length <= 0) {
+        return 0;
     }
 
-    return value;
+    var value = 0;
+    for (var i = 0; i < array.length; i++) {
+        value += array[i] * array[i];
+    }
+
+    return Math.sqrt(value / array.length);
 };
