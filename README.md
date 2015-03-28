@@ -119,6 +119,8 @@ Edition of the ECMAScript Language to ensure optimal compliance.
 * isInfinity(value)
 * isNegativeInfinity(value)
 * isPositiveInfinity(value)
+* isInteger(value)
+* isSafeInteger(value)
 
 #### Extras
 
@@ -138,6 +140,10 @@ var cos120degree = Math.cos(Math.toRadians(120));
 
 ## Changelog
 
+### 1.3.2 (2015.03.28) :
+
+ *
+
 ### 1.3.1 (2015.02.28) :
 
  * Add .editorconfig file
@@ -149,27 +155,6 @@ var cos120degree = Math.cos(Math.toRadians(120));
 ### 1.3.0 (2015.02.03) :
 
  * New implementations : isInteger, isSafeInteger
-
-### 1.2.3 (2015.01.04) :
-
- * Much better performances overall by avoiding function bindings ( see [relevant issue](https://github.com/kchapelier/node-mathp/issues/4) ).
- * _Deep requires_ are now possible ( i.e. : `var dist = require('mathp/functions/euclideanDistance')` ).
- * Slightly more performant sign1 and clz32.
- * Added automatic tests on Node.js 0.11.x via Travis.
-
-### 1.2.2 (2014.12.21) :
-
- * More performant chebyshevDistanceN.
-
-### 1.2.1 (2014.12.14) :
-
- * More performant euclideanModulo.
- * Fix chebyshevDistanceN returning -Infinity in 0d edge case.
-
-### 1.2.0 (2014.12.13) :
-
- * New implementations : roundToPrecision, euclideanModulo, flooredModulo and truncatedModulo.
- * Proper linting and codestyle check.
 
 [Full history](https://github.com/kchapelier/node-mathp/blob/master/CHANGELOG.md)
 
