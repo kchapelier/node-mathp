@@ -142,7 +142,7 @@ var cos120degree = Math.cos(Math.toRadians(120));
 
 ### 1.3.2 (2015.03.28) :
 
- *
+ * Terseness refactor
 
 ### 1.3.1 (2015.02.28) :
 

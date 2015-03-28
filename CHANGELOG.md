@@ -1,5 +1,9 @@
 # Mathp - Changelog
 
+### 1.3.2 (2015.03.28) :
+
+ * Terseness refactor
+
 ### 1.3.1 (2015.02.28) :
 
  * Add .editorconfig file

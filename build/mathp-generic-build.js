@@ -366,19 +366,16 @@ module.exports = function euclideanDistance (x1, y1, x2, y2) {
 module.exports = function euclideanDistanceN (point1, point2) {
     "use strict";
 
-    var result = 0;
-
     if (point1.length !== point2.length) {
-        result = NaN;
-    } else {
-        for (var i = 0; i < point1.length; i++) {
-            result += Math.pow(point1[i] - point2[i], 2);
-        }
-
-        result = Math.sqrt(result);
+        return NaN;
     }
 
-    return result;
+    var result = 0;
+    for (var i = 0; i < point1.length; i++) {
+        result += Math.pow(point1[i] - point2[i], 2);
+    }
+
+    return Math.sqrt(result);
 };
 
 },{}],24:[function(require,module,exports){
@@ -470,19 +467,16 @@ module.exports = Math.fround || function fround (value) {
 module.exports = function gmean (array) {
     "use strict";
 
-    var value = 0;
-
-    if (array && array.length > 0) {
-        value = 1;
-
-        for (var i = 0; i < array.length; i++) {
-            value *= array[i];
-        }
-
-        value = Math.pow(value, 1 / array.length);
+    if (!array || array.length <= 0) {
+        return 0;
     }
 
-    return value;
+    var value = 1;
+    for (var i = 0; i < array.length; i++) {
+        value *= array[i];
+    }
+
+    return Math.pow(value, 1 / array.length);
 };
 
 },{}],30:[function(require,module,exports){
@@ -494,19 +488,16 @@ module.exports = function gmean (array) {
 module.exports = function hmean (array) {
     "use strict";
 
-    var value = 0;
-
-    if (array && array.length > 0) {
-        value = 0;
-
-        for (var i = 0; i < array.length; i++) {
-            value += 1 / array[i];
-        }
-
-        value = array.length / value;
+    if (!array || array.length <= 0) {
+        return 0;
     }
 
-    return value;
+    var value = 0;
+    for (var i = 0; i < array.length; i++) {
+        value += 1 / array[i];
+    }
+
+    return array.length / value;
 };
 
 },{}],31:[function(require,module,exports){
@@ -702,27 +693,25 @@ module.exports = function manhattanDistanceN (point1, point2) {
 module.exports = function median (array) {
     "use strict";
 
-    var value = 0;
+    if (!array || array.length <= 0) {
+        return 0;
+    }
 
-    if (array && array.length > 0) {
-        for (var i = 0; i < array.length; i++) {
-            if (isNaN(array[i])) {
-                return NaN;
-            }
-        }
-
-        var mid = Math.floor(array.length / 2);
-
-        array = array.slice(0).sort();
-
-        if (array.length % 2) {
-            value = array[mid];
-        } else {
-            value = (array[mid - 1] + array[mid]) / 2;
+    for (var i = 0; i < array.length; i++) {
+        if (isNaN(array[i])) {
+            return NaN;
         }
     }
 
-    return value;
+    var mid = Math.floor(array.length / 2);
+
+    array = array.slice(0).sort();
+
+    if (array.length % 2) {
+        return array[mid];
+    } else {
+        return (array[mid - 1] + array[mid]) / 2;
+    }
 };
 
 },{}],51:[function(require,module,exports){
@@ -760,17 +749,16 @@ module.exports = function minkowskiDistanceN (point1, point2, order) {
 module.exports = function rms (array) {
     "use strict";
 
-    var value = 0;
-
-    if (array && array.length > 0) {
-        for (var i = 0; i < array.length; i++) {
-            value += array[i] * array[i];
-        }
-
-        value = Math.sqrt(value / array.length);
+    if (!array || array.length <= 0) {
+        return 0;
     }
 
-    return value;
+    var value = 0;
+    for (var i = 0; i < array.length; i++) {
+        value += array[i] * array[i];
+    }
+
+    return Math.sqrt(value / array.length);
 };
 
 },{}],54:[function(require,module,exports){

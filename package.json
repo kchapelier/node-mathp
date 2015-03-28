@@ -1,6 +1,6 @@
 {
   "name": "mathp",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Math utility (ES6 polyfills and additional methods)",
   "homepage": "https://github.com/kchapelier/node-mathp",
   "main": "index.js",
