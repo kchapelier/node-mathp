@@ -91,6 +91,38 @@ describe('Distance', function () {
         });
     });
 
+    describe('#euclideanDistance3()', function () {
+        it('should return the correct value', function () {
+            Mathp.euclideanDistance3(3, 10, 0, 0, 5, 5).should.equalFloat(7.681145747868608);
+        });
+    });
+
+    describe('#manhattanDistance3()', function () {
+        it('should return the correct value', function () {
+            Mathp.manhattanDistance3(3, 10, 0, 0, 5, 5).should.equalFloat(13);
+        });
+    });
+
+    describe('#manhattanDistance3()', function () {
+        it('should return the correct value', function () {
+            Mathp.manhattanDistance3(3, 10, 0, 0, 5, 5).should.equal(13);
+        });
+    });
+
+    describe('#chebyshevDistance3()', function () {
+        it('should return the correct value', function () {
+            Mathp.chebyshevDistance3(3, 10, 0, 0, 5, 5).should.equal(5);
+        });
+    });
+
+    describe('#minkowskiDistance3()', function () {
+        it('should return the correct value', function () {
+            Mathp.minkowskiDistance3(3, 10, 0, 0, 5, 5, 1).should.equalFloat(13);
+            Mathp.minkowskiDistance3(3, 10, 0, 0, 5, 5, 2).should.equalFloat(7.681145747868608);
+            Mathp.minkowskiDistance3(3, 10, 0, 0, 5, 5, 5).should.equalFloat(5.787474367736346);
+        });
+    });
+
     describe('#euclideanDistanceN()', function () {
         it('should return NaN if the two arguments are not of the same length', function () {
             Mathp.euclideanDistanceN([1], [1, 0]).should.be.NaN;
