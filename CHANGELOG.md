@@ -1,5 +1,9 @@
 # Mathp - Changelog
 
+### 1.4.0 (2015.05.06) :
+
+ * New implementations : euclideanDistance3, manhattanDistance3, chebyshevDistance3 and minkowskiDistance3 (much faster than the generic N dimensions functions)
+
 ### 1.3.2 (2015.03.28) :
 
  * Terseness refactor

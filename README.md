@@ -72,12 +72,16 @@ Edition of the ECMAScript Language to ensure optimal compliance.
 #### Distance
 
 * euclideanDistance(x1, y1, x2, y2) : [Euclidean distance](http://en.wikipedia.org/wiki/Euclidean_distance)
+* euclideanDistance3(x1, y1, z1, x2, y2, z2) : Euclidean distance for 3 dimensions
 * euclideanDistanceN(point1, point2) : Euclidean distance for N dimension(s)
 * manhattanDistance(x1, y1, x2, y2) : [Manhattan distance](http://en.wikipedia.org/wiki/Manhattan_distance)
+* manhattanDistance3(x1, y1, z1, x2, y2, z2) : Manhattan distance for 3 dimensions
 * manhattanDistanceN(point1, point2) : Manhattan distance for N dimension(s)
 * chebyshevDistance(x1, y1, x2, y2) : [Chebyshev distance](http://en.wikipedia.org/wiki/Chebyshev_distance)
+* chebyshevDistance3(x1, y1, z1, x2, y2, z2) : Chebyshev distance for 3 dimensions
 * chebyshevDistanceN(point1, point2) : Chebyshev distance for N dimension(s)
 * minkowskiDistance(x1, y1, x2, y2, p) : [Minkowski distance](http://en.wikipedia.org/wiki/Minkowski_distance)
+* minkowskiDistance3(x1, y1, z1, x2, y2, z2) : Minkowski distance for 3 dimensions
 * minkowskiDistanceN(point1, point2, p) : Minkowski distance for N dimension(s)
 
 #### Trigonometry
@@ -139,6 +143,10 @@ var cos120degree = Math.cos(Math.toRadians(120));
 * Anything that may benefit from some _maths_, and a lot of things do.
 
 ## Changelog
+
+### 1.4.0 (2015.05.06) :
+
+ * New implementations : euclideanDistance3, manhattanDistance3, chebyshevDistance3 and minkowskiDistance3 (much faster than the generic N dimensions functions)
 
 ### 1.3.2 (2015.03.28) :
 
