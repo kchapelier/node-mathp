@@ -1,186 +1,18 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.Mathp = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-/* Object elements retrieval */
-
-var baseFunctions = {
-    abs: Math.abs,
-    acos: Math.acos,
-    asin: Math.asin,
-    atan: Math.atan,
-    atan2: Math.atan2,
-    ceil: Math.ceil,
-    cos: Math.cos,
-    exp: Math.exp,
-    floor: Math.floor,
-    log: Math.log,
-    max: Math.max,
-    min: Math.min,
-    pow: Math.pow,
-    random: Math.random,
-    round: Math.round,
-    sin: Math.sin,
-    sqrt: Math.sqrt,
-    tan: Math.tan
-};
-
-var baseProperties = {
-    E: Math.E,
-    PI: Math.PI,
-    LN2: Math.LN2,
-    LN10: Math.LN10,
-    LOG2E: Math.LOG2E,
-    LOG10E: Math.LOG10E,
-    SQRT1_2: Math.SQRT1_2,
-    SQRT2: Math.SQRT2
-};
-
-var polyfillFunctions = {
-    acosh: require('./functions/acosh'),
-    asinh: require('./functions/asinh'),
-    atanh: require('./functions/atanh'),
-    cbrt: require('./functions/cbrt'),
-    clz32: require('./functions/clz32'),
-    cosh: require('./functions/cosh'),
-    expm1: require('./functions/expm1'),
-    fround: require('./functions/fround'),
-    hypot: require('./functions/hypot'),
-    imul: require('./functions/imul'),
-    log1p: require('./functions/log1p'),
-    log10: require('./functions/log10'),
-    log2: require('./functions/log2'),
-    sign: require('./functions/sign'),
-    sinh: require('./functions/sinh'),
-    tanh: require('./functions/tanh'),
-    trunc: require('./functions/trunc')
-};
-
-var additionalFunctions = {
-    // checks
-    isNaN: require('./functions/isNaN'),
-    isInteger: require('./functions/isInteger'),
-    isSafeInteger: require('./functions/isSafeInteger'),
-    isZero: require('./functions/isZero'),
-    isPositiveZero: require('./functions/isPositiveZero'),
-    isNegativeZero: require('./functions/isNegativeZero'),
-    isFinite: require('./functions/isFinite'),
-    isInfinity: require('./functions/isInfinity'),
-    isPositiveInfinity: require('./functions/isPositiveInfinity'),
-    isNegativeInfinity: require('./functions/isNegativeInfinity'),
-
-    //conversions
-    toDegrees: require('./functions/toDegrees'),
-    toRadians: require('./functions/toRadians'),
-
-    //distances
-    euclideanDistance: require('./functions/euclideanDistance'),
-    manhattanDistance: require('./functions/manhattanDistance'),
-    chebyshevDistance: require('./functions/chebyshevDistance'),
-    minkowskiDistance: require('./functions/minkowskiDistance'),
-    euclideanDistance3: require('./functions/euclideanDistance3'),
-    manhattanDistance3: require('./functions/manhattanDistance3'),
-    chebyshevDistance3: require('./functions/chebyshevDistance3'),
-    minkowskiDistance3: require('./functions/minkowskiDistance3'),
-    euclideanDistanceN: require('./functions/euclideanDistanceN'),
-    manhattanDistanceN: require('./functions/manhattanDistanceN'),
-    chebyshevDistanceN: require('./functions/chebyshevDistanceN'),
-    minkowskiDistanceN: require('./functions/minkowskiDistanceN'),
-
-    //general
-    lerp: require('./functions/lerp'),
-    limit: require('./functions/limit'),
-    scale: require('./functions/scale'),
-    sign1: require('./functions/sign1'),
-    copySign: require('./functions/copySign'),
-    smoothstep: require('./functions/smoothstep'),
-    smootherstep: require('./functions/smootherstep'),
-    step: require('./functions/step'),
-    factorial: require('./functions/factorial'),
-    roundToPrecision: require('./functions/roundToPrecision'),
-    euclideanModulo: require('./functions/euclideanModulo'),
-    flooredModulo: require('./functions/flooredModulo'),
-    truncatedModulo: require('./functions/truncatedModulo'),
-    wshaper: require('./functions/wshaper'),
-
-    //means
-    rms: require('./functions/rms'),
-    amean: require('./functions/amean'),
-    gmean: require('./functions/gmean'),
-    hmean: require('./functions/hmean'),
-    median: require('./functions/median'),
-
-    //trigonometry
-    sinc: require('./functions/sinc'),
-    cot: require('./functions/cot'),
-    sec: require('./functions/sec'),
-    csc: require('./functions/csc'),
-    coth: require('./functions/coth'),
-    sech: require('./functions/sech'),
-    csch: require('./functions/csch'),
-    acot:  require('./functions/acot'),
-    asec:  require('./functions/asec'),
-    acsc:  require('./functions/acsc'),
-    acoth: require('./functions/acoth'),
-    asech: require('./functions/asech'),
-    acsch: require('./functions/acsch')
-};
-
-var additionalProperties = {
-    PI_2: require('./properties/pi_2'),
-    PI_4: require('./properties/pi_4'),
-    GOLDEN_RATIO: require('./properties/golden_ratio'),
-    MAX_SAFE_INTEGER: require('./properties/max_safe_integer')
-};
-
-
-/* Object composition */
-
-var Mathp = {};
-
-var importProperties = function (obj) {
-    "use strict";
-
-    var key, value;
-
-    for (key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            value = obj[key];
-
-            if (typeof value === 'function') {
-                Mathp[key] = value;
-            } else {
-                Object.defineProperty(Mathp, key, {
-                    enumerable: true,
-                    writable: false,
-                    value: value
-                });
-            }
-        }
-    }
-};
-
-importProperties(baseFunctions);
-importProperties(baseProperties);
-importProperties(polyfillFunctions);
-importProperties(additionalFunctions);
-importProperties(additionalProperties);
-
-
-module.exports = Mathp;
-
-},{"./functions/acosh":2,"./functions/acot":3,"./functions/acoth":4,"./functions/acsc":5,"./functions/acsch":6,"./functions/amean":7,"./functions/asec":8,"./functions/asech":9,"./functions/asinh":10,"./functions/atanh":11,"./functions/cbrt":12,"./functions/chebyshevDistance":13,"./functions/chebyshevDistance3":14,"./functions/chebyshevDistanceN":15,"./functions/clz32":16,"./functions/copySign":17,"./functions/cosh":18,"./functions/cot":19,"./functions/coth":20,"./functions/csc":21,"./functions/csch":22,"./functions/euclideanDistance":23,"./functions/euclideanDistance3":24,"./functions/euclideanDistanceN":25,"./functions/euclideanModulo":26,"./functions/expm1":27,"./functions/factorial":28,"./functions/flooredModulo":29,"./functions/fround":30,"./functions/gmean":31,"./functions/hmean":32,"./functions/hypot":33,"./functions/imul":34,"./functions/isFinite":35,"./functions/isInfinity":36,"./functions/isInteger":37,"./functions/isNaN":38,"./functions/isNegativeInfinity":39,"./functions/isNegativeZero":40,"./functions/isPositiveInfinity":41,"./functions/isPositiveZero":42,"./functions/isSafeInteger":43,"./functions/isZero":44,"./functions/lerp":45,"./functions/limit":46,"./functions/log10":47,"./functions/log1p":48,"./functions/log2":49,"./functions/manhattanDistance":50,"./functions/manhattanDistance3":51,"./functions/manhattanDistanceN":52,"./functions/median":53,"./functions/minkowskiDistance":54,"./functions/minkowskiDistance3":55,"./functions/minkowskiDistanceN":56,"./functions/rms":57,"./functions/roundToPrecision":58,"./functions/scale":59,"./functions/sec":60,"./functions/sech":61,"./functions/sign":62,"./functions/sign1":63,"./functions/sinc":64,"./functions/sinh":65,"./functions/smootherstep":66,"./functions/smoothstep":67,"./functions/step":68,"./functions/tanh":69,"./functions/toDegrees":70,"./functions/toRadians":71,"./functions/trunc":72,"./functions/truncatedModulo":73,"./functions/wshaper":74,"./properties/golden_ratio":75,"./properties/max_safe_integer":76,"./properties/pi_2":77,"./properties/pi_4":78}],2:[function(require,module,exports){
 module.exports = Math.acosh || function acosh (value) {
     "use strict";
 
     return Math.log(value + Math.sqrt(value * value - 1));
 };
 
-},{}],3:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 module.exports = function acot (value) {
     "use strict";
 
     return Math.atan(1 / value);
 };
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 var atanh = require('./atanh');
 
 module.exports = function acoth (value) {
@@ -189,14 +21,14 @@ module.exports = function acoth (value) {
     return atanh(1 / value);
 };
 
-},{"./atanh":11}],5:[function(require,module,exports){
+},{"./atanh":10}],4:[function(require,module,exports){
 module.exports = function acsc (value) {
     "use strict";
 
     return Math.asin(1 / value);
 };
 
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 var asinh = require('./asinh');
 
 module.exports = function acsch (value) {
@@ -205,7 +37,7 @@ module.exports = function acsch (value) {
     return asinh(1 / value);
 };
 
-},{"./asinh":10}],7:[function(require,module,exports){
+},{"./asinh":9}],6:[function(require,module,exports){
 /**
  * Arithmetic mean of the values of an array
  * @param array
@@ -227,14 +59,14 @@ module.exports = function amean (array) {
     return value;
 };
 
-},{}],8:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 module.exports = function asec (value) {
     "use strict";
 
     return Math.acos(1 / value);
 };
 
-},{}],9:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 var acosh = require('./acosh');
 
 module.exports = function asech (value) {
@@ -243,7 +75,7 @@ module.exports = function asech (value) {
     return acosh(1 / value);
 };
 
-},{"./acosh":2}],10:[function(require,module,exports){
+},{"./acosh":1}],9:[function(require,module,exports){
 var isNegativeZero = require('./isNegativeZero');
 
 module.exports = Math.asinh || function asinh (value) {
@@ -256,7 +88,7 @@ module.exports = Math.asinh || function asinh (value) {
     }
 };
 
-},{"./isNegativeZero":40}],11:[function(require,module,exports){
+},{"./isNegativeZero":40}],10:[function(require,module,exports){
 var isNegativeZero = require('./isNegativeZero');
 
 module.exports = Math.atanh || function atanh (value) {
@@ -269,7 +101,7 @@ module.exports = Math.atanh || function atanh (value) {
     }
 };
 
-},{"./isNegativeZero":40}],12:[function(require,module,exports){
+},{"./isNegativeZero":40}],11:[function(require,module,exports){
 var sign = require('./sign');
 
 module.exports = Math.cbrt || function cbrt (value) {
@@ -279,21 +111,21 @@ module.exports = Math.cbrt || function cbrt (value) {
     return y * sign(value);
 };
 
-},{"./sign":62}],13:[function(require,module,exports){
+},{"./sign":62}],12:[function(require,module,exports){
 module.exports = function chebyshevDistance (x1, y1, x2, y2) {
     "use strict";
 
     return Math.max(Math.abs(x1 - x2), Math.abs(y1 - y2));
 };
 
-},{}],14:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 module.exports = function chebyshevDistance3 (x1, y1, z1, x2, y2, z2) {
     "use strict";
 
     return Math.max(Math.abs(x1 - x2), Math.abs(y1 - y2), Math.abs(z1 - z2));
 };
 
-},{}],15:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 module.exports = function chebyshevDistanceN (point1, point2) {
     "use strict";
 
@@ -309,7 +141,7 @@ module.exports = function chebyshevDistanceN (point1, point2) {
     return result;
 };
 
-},{}],16:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = Math.clz32 || function clz32 (value) {
     "use strict";
 
@@ -317,7 +149,7 @@ module.exports = Math.clz32 || function clz32 (value) {
     return value ? 32 - value.toString(2).length : 32;
 };
 
-},{}],17:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 var sign1 = require('./sign1');
 
 module.exports = function copySign (value, sign) {
@@ -326,7 +158,7 @@ module.exports = function copySign (value, sign) {
     return Math.abs(value) * sign1(sign);
 };
 
-},{"./sign1":63}],18:[function(require,module,exports){
+},{"./sign1":63}],17:[function(require,module,exports){
 module.exports = Math.cosh || function cosh (value) {
     "use strict";
 
@@ -334,14 +166,14 @@ module.exports = Math.cosh || function cosh (value) {
     return (y + 1 / y) / 2;
 };
 
-},{}],19:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 module.exports = function cot (value) {
     "use strict";
 
     return 1 / Math.tan(value);
 };
 
-},{}],20:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 var tanh = require('./tanh');
 
 module.exports = function coth (value) {
@@ -350,14 +182,14 @@ module.exports = function coth (value) {
     return 1 / tanh(value);
 };
 
-},{"./tanh":69}],21:[function(require,module,exports){
+},{"./tanh":69}],20:[function(require,module,exports){
 module.exports = function csc (value) {
     "use strict";
 
     return 1 / Math.sin(value);
 };
 
-},{}],22:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 var sinh = require('./sinh');
 
 module.exports = function csch (value) {
@@ -366,21 +198,21 @@ module.exports = function csch (value) {
     return 1 / sinh(value);
 };
 
-},{"./sinh":65}],23:[function(require,module,exports){
+},{"./sinh":65}],22:[function(require,module,exports){
 module.exports = function euclideanDistance (x1, y1, x2, y2) {
     "use strict";
 
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
 
-},{}],24:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 module.exports = function euclideanDistance3 (x1, y1, z1, x2, y2, z2) {
     "use strict";
 
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2) + Math.pow(z1 - z2, 2));
 };
 
-},{}],25:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 module.exports = function euclideanDistanceN (point1, point2) {
     "use strict";
 
@@ -396,7 +228,7 @@ module.exports = function euclideanDistanceN (point1, point2) {
     return Math.sqrt(result);
 };
 
-},{}],26:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 /**
  * Returns the remainder of an euclidean division, the result is always positive.
  * @param dividend
@@ -411,7 +243,7 @@ module.exports = function euclideanModulo (dividend, divisor) {
     return remainder < 0 ? remainder + Math.abs(divisor) : remainder;
 };
 
-},{}],27:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 var isNegativeZero = require('./isNegativeZero');
 
 module.exports = Math.expm1 || function expm1 (value) {
@@ -424,7 +256,7 @@ module.exports = Math.expm1 || function expm1 (value) {
     }
 };
 
-},{"./isNegativeZero":40}],28:[function(require,module,exports){
+},{"./isNegativeZero":40}],27:[function(require,module,exports){
 var isInteger = require("./isInteger");
 
 var factorialCache = {
@@ -454,7 +286,7 @@ module.exports = function factorial (value) {
     return factorialFunc(value);
 };
 
-},{"./isInteger":37}],29:[function(require,module,exports){
+},{"./isInteger":37}],28:[function(require,module,exports){
 /**
  * Returns the remainder of a floored division, the result has the same sign as the divisor.
  * @param dividend
@@ -465,6 +297,13 @@ module.exports = function flooredModulo (dividend, divisor) {
     "use strict";
 
     return ((dividend % divisor) + divisor) % divisor;
+};
+
+},{}],29:[function(require,module,exports){
+module.exports = function fract (value) {
+    "use strict";
+
+    return value - Math.floor(value);
 };
 
 },{}],30:[function(require,module,exports){
@@ -608,7 +447,7 @@ module.exports = Number.isSafeInteger || function (val) {
         val % 1 === 0;
 };
 
-},{"./../properties/max_safe_integer":76}],44:[function(require,module,exports){
+},{"./../properties/max_safe_integer":77}],44:[function(require,module,exports){
 module.exports = function isZero (value) {
     "use strict";
 
@@ -829,7 +668,7 @@ module.exports = function sech (value) {
     return 1 / cosh(value);
 };
 
-},{"./cosh":18}],62:[function(require,module,exports){
+},{"./cosh":17}],62:[function(require,module,exports){
 module.exports = Math.sign || function sign (value) {
     "use strict";
 
@@ -993,16 +832,185 @@ module.exports = function wshaper (value, min, max, shape) {
 };
 
 },{"./scale":59}],75:[function(require,module,exports){
+/* Object elements retrieval */
+
+var baseFunctions = {
+    abs: Math.abs,
+    acos: Math.acos,
+    asin: Math.asin,
+    atan: Math.atan,
+    atan2: Math.atan2,
+    ceil: Math.ceil,
+    cos: Math.cos,
+    exp: Math.exp,
+    floor: Math.floor,
+    log: Math.log,
+    max: Math.max,
+    min: Math.min,
+    pow: Math.pow,
+    random: Math.random,
+    round: Math.round,
+    sin: Math.sin,
+    sqrt: Math.sqrt,
+    tan: Math.tan
+};
+
+var baseProperties = {
+    E: Math.E,
+    PI: Math.PI,
+    LN2: Math.LN2,
+    LN10: Math.LN10,
+    LOG2E: Math.LOG2E,
+    LOG10E: Math.LOG10E,
+    SQRT1_2: Math.SQRT1_2,
+    SQRT2: Math.SQRT2
+};
+
+var polyfillFunctions = {
+    acosh: require('./functions/acosh'),
+    asinh: require('./functions/asinh'),
+    atanh: require('./functions/atanh'),
+    cbrt: require('./functions/cbrt'),
+    clz32: require('./functions/clz32'),
+    cosh: require('./functions/cosh'),
+    expm1: require('./functions/expm1'),
+    fround: require('./functions/fround'),
+    hypot: require('./functions/hypot'),
+    imul: require('./functions/imul'),
+    log1p: require('./functions/log1p'),
+    log10: require('./functions/log10'),
+    log2: require('./functions/log2'),
+    sign: require('./functions/sign'),
+    sinh: require('./functions/sinh'),
+    tanh: require('./functions/tanh'),
+    trunc: require('./functions/trunc')
+};
+
+var additionalFunctions = {
+    // checks
+    isNaN: require('./functions/isNaN'),
+    isInteger: require('./functions/isInteger'),
+    isSafeInteger: require('./functions/isSafeInteger'),
+    isZero: require('./functions/isZero'),
+    isPositiveZero: require('./functions/isPositiveZero'),
+    isNegativeZero: require('./functions/isNegativeZero'),
+    isFinite: require('./functions/isFinite'),
+    isInfinity: require('./functions/isInfinity'),
+    isPositiveInfinity: require('./functions/isPositiveInfinity'),
+    isNegativeInfinity: require('./functions/isNegativeInfinity'),
+
+    //conversions
+    toDegrees: require('./functions/toDegrees'),
+    toRadians: require('./functions/toRadians'),
+
+    //distances
+    euclideanDistance: require('./functions/euclideanDistance'),
+    manhattanDistance: require('./functions/manhattanDistance'),
+    chebyshevDistance: require('./functions/chebyshevDistance'),
+    minkowskiDistance: require('./functions/minkowskiDistance'),
+    euclideanDistance3: require('./functions/euclideanDistance3'),
+    manhattanDistance3: require('./functions/manhattanDistance3'),
+    chebyshevDistance3: require('./functions/chebyshevDistance3'),
+    minkowskiDistance3: require('./functions/minkowskiDistance3'),
+    euclideanDistanceN: require('./functions/euclideanDistanceN'),
+    manhattanDistanceN: require('./functions/manhattanDistanceN'),
+    chebyshevDistanceN: require('./functions/chebyshevDistanceN'),
+    minkowskiDistanceN: require('./functions/minkowskiDistanceN'),
+
+    //general
+    lerp: require('./functions/lerp'),
+    limit: require('./functions/limit'),
+    scale: require('./functions/scale'),
+    sign1: require('./functions/sign1'),
+    copySign: require('./functions/copySign'),
+    smoothstep: require('./functions/smoothstep'),
+    smootherstep: require('./functions/smootherstep'),
+    step: require('./functions/step'),
+    factorial: require('./functions/factorial'),
+    roundToPrecision: require('./functions/roundToPrecision'),
+    euclideanModulo: require('./functions/euclideanModulo'),
+    flooredModulo: require('./functions/flooredModulo'),
+    truncatedModulo: require('./functions/truncatedModulo'),
+    wshaper: require('./functions/wshaper'),
+    fract: require('./functions/fract'),
+
+    //means
+    rms: require('./functions/rms'),
+    amean: require('./functions/amean'),
+    gmean: require('./functions/gmean'),
+    hmean: require('./functions/hmean'),
+    median: require('./functions/median'),
+
+    //trigonometry
+    sinc: require('./functions/sinc'),
+    cot: require('./functions/cot'),
+    sec: require('./functions/sec'),
+    csc: require('./functions/csc'),
+    coth: require('./functions/coth'),
+    sech: require('./functions/sech'),
+    csch: require('./functions/csch'),
+    acot:  require('./functions/acot'),
+    asec:  require('./functions/asec'),
+    acsc:  require('./functions/acsc'),
+    acoth: require('./functions/acoth'),
+    asech: require('./functions/asech'),
+    acsch: require('./functions/acsch')
+};
+
+var additionalProperties = {
+    PI_2: require('./properties/pi_2'),
+    PI_4: require('./properties/pi_4'),
+    GOLDEN_RATIO: require('./properties/golden_ratio'),
+    MAX_SAFE_INTEGER: require('./properties/max_safe_integer')
+};
+
+
+/* Object composition */
+
+var Mathp = {};
+
+var importProperties = function (obj) {
+    "use strict";
+
+    var key, value;
+
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            value = obj[key];
+
+            if (typeof value === 'function') {
+                Mathp[key] = value;
+            } else {
+                Object.defineProperty(Mathp, key, {
+                    enumerable: true,
+                    writable: false,
+                    value: value
+                });
+            }
+        }
+    }
+};
+
+importProperties(baseFunctions);
+importProperties(baseProperties);
+importProperties(polyfillFunctions);
+importProperties(additionalFunctions);
+importProperties(additionalProperties);
+
+
+module.exports = Mathp;
+
+},{"./functions/acosh":1,"./functions/acot":2,"./functions/acoth":3,"./functions/acsc":4,"./functions/acsch":5,"./functions/amean":6,"./functions/asec":7,"./functions/asech":8,"./functions/asinh":9,"./functions/atanh":10,"./functions/cbrt":11,"./functions/chebyshevDistance":12,"./functions/chebyshevDistance3":13,"./functions/chebyshevDistanceN":14,"./functions/clz32":15,"./functions/copySign":16,"./functions/cosh":17,"./functions/cot":18,"./functions/coth":19,"./functions/csc":20,"./functions/csch":21,"./functions/euclideanDistance":22,"./functions/euclideanDistance3":23,"./functions/euclideanDistanceN":24,"./functions/euclideanModulo":25,"./functions/expm1":26,"./functions/factorial":27,"./functions/flooredModulo":28,"./functions/fract":29,"./functions/fround":30,"./functions/gmean":31,"./functions/hmean":32,"./functions/hypot":33,"./functions/imul":34,"./functions/isFinite":35,"./functions/isInfinity":36,"./functions/isInteger":37,"./functions/isNaN":38,"./functions/isNegativeInfinity":39,"./functions/isNegativeZero":40,"./functions/isPositiveInfinity":41,"./functions/isPositiveZero":42,"./functions/isSafeInteger":43,"./functions/isZero":44,"./functions/lerp":45,"./functions/limit":46,"./functions/log10":47,"./functions/log1p":48,"./functions/log2":49,"./functions/manhattanDistance":50,"./functions/manhattanDistance3":51,"./functions/manhattanDistanceN":52,"./functions/median":53,"./functions/minkowskiDistance":54,"./functions/minkowskiDistance3":55,"./functions/minkowskiDistanceN":56,"./functions/rms":57,"./functions/roundToPrecision":58,"./functions/scale":59,"./functions/sec":60,"./functions/sech":61,"./functions/sign":62,"./functions/sign1":63,"./functions/sinc":64,"./functions/sinh":65,"./functions/smootherstep":66,"./functions/smoothstep":67,"./functions/step":68,"./functions/tanh":69,"./functions/toDegrees":70,"./functions/toRadians":71,"./functions/trunc":72,"./functions/truncatedModulo":73,"./functions/wshaper":74,"./properties/golden_ratio":76,"./properties/max_safe_integer":77,"./properties/pi_2":78,"./properties/pi_4":79}],76:[function(require,module,exports){
 module.exports = (Math.sqrt(5) + 1) / 2;
 
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 module.exports = 9007199254740991; // equivalent to Math.pow(2, 53) - 1;
 
-},{}],77:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 module.exports = Math.PI / 2;
 
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 module.exports = Math.PI / 4;
 
-},{}]},{},[1])(1)
+},{}]},{},[75])(75)
 });

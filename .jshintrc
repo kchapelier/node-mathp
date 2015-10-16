@@ -13,7 +13,7 @@
   "strict": true,
   "nonbsp": true,
   "freeze": true,
-  "maxparams": 5,
+  "maxparams": 7,
   "maxdepth": 3,
   "maxcomplexity": 8,
   "maxstatements": 20
