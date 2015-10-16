@@ -17,6 +17,7 @@ notes
 
 #
 build/
+test/
 .editorconfig
 .jscsrc
 .jshintrc
