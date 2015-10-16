@@ -13,7 +13,7 @@ With [npm](http://npmjs.org) do:
 npm install mathp
 ```
 
-To run the test suite, run the following command from the mathp directory:
+To run the test suite, clone the repository and run the following command from the root directory:
 
 ```
 npm test
@@ -26,6 +26,7 @@ npm test
 * Doesn't modify the actual Math object.
 * Doesn't modify the Number prototype or rely on boxing of any kind.
 * Works in Titanium.
+* Supports deep requires for low footprint in browserify projects.
 
 ## Current methods
 
@@ -68,6 +69,7 @@ Edition of the ECMAScript Language to ensure optimal compliance.
 * euclideanModulo(dividend, divisor)
 * flooredModulo(dividend, divisor)
 * truncatedModulo(dividend, divisor)
+* fract(value)
 
 #### Distance
 
@@ -130,11 +132,38 @@ Edition of the ECMAScript Language to ensure optimal compliance.
 
 * wshaper(value, min, max, shape)
 
+
+## Examples
+
+### Basic usage
+
+```js
+var mathp = require('mathp');
+
+var taxiDist = mathp.manhattanDistance(0, 0, 12, 15);
+var cos120degree = Math.cos(mathp.toRadians(120));
+```
+
+### Replacing the native Math object
+
 ```js
 var Math = require('mathp');
+
 var taxiDist = Math.manhattanDistance(0, 0, 12, 15);
 var cos120degree = Math.cos(Math.toRadians(120));
 ```
+
+### With deep requires
+
+```js
+var manhattanDistance = require('mathp/functions/manhattanDistance')),
+    toRandians = require('mathp/functions/toRadians'));
+
+var taxiDist = manhattanDistance(0, 0, 12, 15);
+var cos120degree = Math.cos(toRadians(120));
+```
+
+Projects using deep requires will only include the code they actually need whe bundled with browserify instead of the whole module.
 
 ## Potential use cases
 
@@ -144,25 +173,33 @@ var cos120degree = Math.cos(Math.toRadians(120));
 
 ## Changelog
 
+### 1.5.0 (2015.10.16) :
+
+ * New implementation : fract.
+ * Remove the test folder from the package downloaded from npm.
+ * Updated dev dependencies.
+ * Added automatic tests on the latest stable version of Node.js Travis.
+ * Removed automatic tests on Node.js 0.10.x and iojs via Travis.
+
 ### 1.4.0 (2015.05.06) :
 
- * New implementations : euclideanDistance3, manhattanDistance3, chebyshevDistance3 and minkowskiDistance3 (much faster than the generic N dimensions functions)
+ * New implementations : euclideanDistance3, manhattanDistance3, chebyshevDistance3 and minkowskiDistance3 (much faster than the generic N dimensions functions).
 
 ### 1.3.2 (2015.03.28) :
 
- * Terseness refactor
+ * Terseness refactor.
 
 ### 1.3.1 (2015.02.28) :
 
- * Add .editorconfig file
- * Removed the builds and other unecessary files from the package download from npm
- * Updated dev dependencies
- * Added automatic tests on Node.js 0.12.x and io.js via Travis
- * Removed automatic tests on Node.js 0.11.x via Travis
+ * Add .editorconfig file.
+ * Removed the builds and other unecessary files from the package downloaded from npm.
+ * Updated dev dependencies.
+ * Added automatic tests on Node.js 0.12.x and io.js via Travis.
+ * Removed automatic tests on Node.js 0.11.x via Travis.
 
 ### 1.3.0 (2015.02.03) :
 
- * New implementations : isInteger, isSafeInteger
+ * New implementations : isInteger, isSafeInteger.
 
 [Full history](https://github.com/kchapelier/node-mathp/blob/master/CHANGELOG.md)
 

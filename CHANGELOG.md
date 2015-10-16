@@ -1,24 +1,32 @@
 # Mathp - Changelog
 
+### 1.5.0 (2015.10.16) :
+
+ * New implementation : fract.
+ * Remove the test folder from the package downloaded from npm.
+ * Updated dev dependencies.
+ * Added automatic tests on the latest stable version of Node.js Travis.
+ * Removed automatic tests on Node.js 0.10.x and iojs via Travis.
+
 ### 1.4.0 (2015.05.06) :
 
- * New implementations : euclideanDistance3, manhattanDistance3, chebyshevDistance3 and minkowskiDistance3 (much faster than the generic N dimensions functions)
+ * New implementations : euclideanDistance3, manhattanDistance3, chebyshevDistance3 and minkowskiDistance3 (much faster than the generic N dimensions functions).
 
 ### 1.3.2 (2015.03.28) :
 
- * Terseness refactor
+ * Terseness refactor.
 
 ### 1.3.1 (2015.02.28) :
 
- * Add .editorconfig file
- * Removed the builds and other unecessary files from the package download from npm
- * Updated dev dependencies
- * Added automatic tests on Node.js 0.12.x and io.js via Travis
- * Removed automatic tests on Node.js 0.11.x via Travis
+ * Add .editorconfig file.
+ * Removed the builds and other unecessary files from the package download from npm.
+ * Updated dev dependencies.
+ * Added automatic tests on Node.js 0.12.x and io.js via Travis.
+ * Removed automatic tests on Node.js 0.11.x via Travis.
 
 ### 1.3.0 (2015.02.03) :
 
- * New implementations : isInteger, isSafeInteger
+ * New implementations : isInteger, isSafeInteger.
 
 ### 1.2.3 (2015.01.04) :
 
