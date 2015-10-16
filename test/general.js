@@ -291,4 +291,31 @@ describe('General', function () {
             Mathp.truncatedModulo(-5, -3).should.equal(-2);
         });
     });
+
+    describe('#fract()', function () {
+        it('should return NaN if its argument is NaN', function () {
+            Mathp.fract().should.be.NaN;
+            Mathp.fract(NaN).should.be.NaN;
+            Mathp.fract('toto').should.be.NaN;
+        });
+
+        it('should return NaN if its argument is Infinity', function () {
+            Mathp.fract(Number.NEGATIVE_INFINITY).should.be.NaN;
+            Mathp.fract(Number.POSITIVE_INFINITY).should.be.NaN;
+        });
+
+        it('should return the fractional part of the arguments', function () {
+            Mathp.fract(5).should.be.equal(0);
+            Mathp.fract(5.1).should.be.equalFloat(0.1);
+            Mathp.fract(5.5).should.be.equalFloat(0.5);
+            Mathp.fract(5.9).should.be.equalFloat(0.9);
+        });
+
+        it('should always return a positive value', function () {
+            Mathp.fract(-5).should.be.equal(0);
+            Mathp.fract(-5.1).should.be.equalFloat(0.9);
+            Mathp.fract(-5.5).should.be.equalFloat(0.5);
+            Mathp.fract(-5.9).should.be.equalFloat(0.1);
+        });
+    });
 });

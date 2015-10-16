@@ -98,6 +98,7 @@ var additionalFunctions = {
     flooredModulo: require('./functions/flooredModulo'),
     truncatedModulo: require('./functions/truncatedModulo'),
     wshaper: require('./functions/wshaper'),
+    fract: require('./functions/fract'),
 
     //means
     rms: require('./functions/rms'),
